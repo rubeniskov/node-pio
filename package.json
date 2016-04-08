@@ -1,0 +1,46 @@
+{
+  "name": "node-pollsio",
+  "version": "1.0.0",
+  "description": "A simple polls manager using socket.io as connection protocol",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rubeniskov/node-pollsio.git"
+  },
+  "keywords": [
+    "polls",
+    "managment",
+    "quiz",
+    "websocket"
+  ],
+  "author": "Rubén López Gómez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rubeniskov/node-pollsio/issues"
+  },
+  "homepage": "https://github.com/rubeniskov/node-pollsio",
+  "dependencies": {
+    "angular": "^1.5.3",
+    "body-parser": "^1.15.0",
+    "bootstrap-sass": "^3.3.6",
+    "colors": "^1.1.2",
+    "deep-extend": "^0.4.1",
+    "express": "^4.13.4",
+    "install": "^0.6.1",
+    "jsonwebtoken": "^5.7.0",
+    "minimist": "^1.2.0",
+    "mongoose": "^4.4.11",
+    "morgan": "^1.7.0",
+    "nomnom": "^1.8.1",
+    "npm": "^3.8.5",
+    "optimist": "^0.6.1",
+    "promise": "^7.1.1",
+    "q": "^1.4.1",
+    "socket.io": "^1.4.5",
+    "underscore": "^1.8.3",
+    "underscore-deep-extend": "0.0.5"
+  }
+}
