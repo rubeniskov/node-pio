@@ -1,5 +1,5 @@
 {
-  "name": "node-pollsio",
+  "name": "node-pio",
   "version": "1.0.0",
   "description": "A simple polls manager using socket.io as connection protocol",
   "main": "app.js",
@@ -10,20 +10,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rubeniskov/node-pollsio.git"
+    "url": "https://github.com/rubeniskov/node-pio.git"
   },
   "keywords": [
     "polls",
     "managment",
     "quiz",
-    "websocket"
+    "websocket",
+    "angular",
+    "html5",
+    "express",
+    "socket"
   ],
   "author": "Rubén López Gómez",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rubeniskov/node-pollsio/issues"
+    "url": "https://github.com/rubeniskov/node-pio/issues"
   },
-  "homepage": "https://github.com/rubeniskov/node-pollsio",
+  "homepage": "https://github.com/rubeniskov/node-pio",
   "dependencies": {
     "angular": "^1.5.3",
     "body-parser": "^1.15.0",
