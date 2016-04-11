@@ -1,0 +1,54 @@
+{
+    "app": {
+        "app-css": {
+            "app/dist/main.css" : "app/scss/main.scss"
+        },
+        "app-js": {
+            "app/dist/main.js" : "app/script/main.js"
+        },
+
+        "paths": {
+            "angular": "../lib/angular/angular.min",
+            "angular-animate": "../lib/angular-animate/angular-animate.min",
+            "angular-aria": "../lib/angular-aria/angular-aria.min",
+            "angular-bootstrap": "../lib/angular-bootstrap/ui-bootstrap.min",
+            "angular-messages": "../lib/angular-messages/angular-messages.min",
+            "angular-resource": "../lib/angular-resource/angular-resource.min",
+            "angular-sanitize": "../lib/angular-sanitize/angular-sanitize.min",
+            "angular-socket-io": "../lib/angular-socket-io/socket.min",
+            "angular-ui-router": "../lib/angular-ui-router/release/angular-ui-router.min",
+            "jquery": "../lib/jquery/dist/jquery.min",
+            "moment": "../lib/moment/min/moment-with-locales.min",
+            "pace": "../lib/pace/pace.min"
+        },
+        "shim": {
+            "angular": {
+                "exports": "angular"
+            },
+            "angular-animate": {
+                "deps": ["angular"]
+            },
+            "angular-aria": {
+                "deps": ["angular"]
+            },
+            "angular-bootstrap": {
+                "deps": ["angular"]
+            },
+            "angular-messages": {
+                "deps": ["angular"]
+            },
+            "angular-messages": {
+                "deps": ["angular"]
+            },
+            "angular-sanitize": {
+                "deps": ["angular"]
+            },
+            "angular-socket-io": {
+                "deps": ["angular"]
+            },
+            "angular-ui-router": {
+                "deps": ["angular"]
+            }
+        }
+    }
+}
