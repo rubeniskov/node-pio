@@ -33,7 +33,6 @@ var express     = require('express'),
         })
         .parse()
 
-require('./app/utils/utils.js')
 //mongoose.connect('mongodb://localhost:27017/polls');
 
 morgan.format('app', [
@@ -80,7 +79,7 @@ morgan.format('api', [
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 
-app.orm = require('./app/orm/orm.js')({
+app.orm = require('./orm/orm.js')({
     hostname: 'localhost',
     port: 27017,
     db: 'polls'
@@ -104,7 +103,7 @@ app.get('/js', function(req, res) {
     res.send('hello');
 });
 
-app.use('/api', require('./app/api/api.js')(opts, app.orm));
+app.use('/api', require('./api/api.js')(opts, app.orm));
 
 app.listen(opts.port, function() {
     opts.debug && app.use(morgan('app'));
@@ -117,19 +116,28 @@ app.on('connection', function() {
 
 //console.log(orm.models.role.read);
 
-console.log(app.orm.models.user.create.toString());
+//console.log(app.orm.models.user.create.toString());
+app.orm.auth('admin', ['admin']);
 app.orm.models.user.create({
-    _id: (10000000+Math.floor(Math.random()*900))+'M',
+    _id: (10000000+Math.floor(Math.random()*1000000))+'M',
     name: {
         first: 'jurjut'
     },
-    password: 123,
-    options: {
-        user: 'admin',
-        groups: ['admin']
-    }
+    password: 123
+}, function(err){
+    console.log(err);
 }).then(function(){
     console.log('Success', arguments);
 }, function(err){
-    console.log('Error', JSON.stringify(err, null , 4));
+    console.log('Error', err, JSON.stringify(err, null , 4));
 });
+
+// app.orm.models.user.findOne({
+//     _id: '10477185M'
+// }, function(err){
+//     console.log(err);
+// }).then(function(){
+//     console.log('Success', arguments);
+// }, function(err){
+//     console.log('Error', err, JSON.stringify(err, null , 4));
+// });
