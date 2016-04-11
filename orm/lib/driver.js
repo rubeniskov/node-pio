@@ -17,11 +17,3 @@ module.exports = function(utils){
         })(utils.deepExtend(defaults, options));
     };
 };
-// function(options){
-//     return (function(options){
-//         return driver.connect(['mongodb://',[options.hostname,options.port].join(':'),'/', options.db].join(''), {
-//             user: options.user,
-//             password: options.password
-//         }) ;
-//     })(deepExtend(defaults, options));
-// }

@@ -13,7 +13,7 @@ module.exports = function(schema){
         password: {
             type: String,
             required: [true, 'user.password is required'],
-            permissions: '1000'//,
+            permissions: 'o+s',
             // default: function(){
             //     console.log(this);
             // }
@@ -43,7 +43,8 @@ module.exports = function(schema){
             type: Array
         }
     }, {
-        permissions: '110',
-        groups: 'admin'
+        autoIndex: false,
+        permissions: 'o+crud,og+r',
+        ownership: 'admin:user'
     });
 }
