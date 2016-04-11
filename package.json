@@ -1,6 +1,6 @@
 {
   "name": "node-pio",
-  "version": "1.0.0",
+  "version": "1.0.0-beta",
   "description": "A simple polls manager using socket.io as connection protocol",
   "main": "app.js",
   "scripts": {
