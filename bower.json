@@ -1,12 +1,11 @@
 {
   "name": "node-pio",
-  "version": "1.0.0",
+  "version": "1.0.0-beta",
   "authors": [
     "Rubén López Gómez - @Rubeniskov"
   ],
   "description": "A simple polls manager using socket.io as connection protocol",
   "main": "app.js",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
