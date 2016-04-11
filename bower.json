@@ -6,7 +6,6 @@
   ],
   "description": "A simple polls manager using socket.io as connection protocol",
   "main": "app.js",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
