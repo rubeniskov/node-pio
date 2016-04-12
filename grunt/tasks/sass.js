@@ -1,10 +1,10 @@
 module.exports = function(grunt, data) {
     return {
-        dist: {
+        "build": {
             options: {
                 style: 'expanded'
             },
-            files: '<%= app.config.app-css %>'
+            files: '<%= app.config.build.css %>'
         }
     }
 };
