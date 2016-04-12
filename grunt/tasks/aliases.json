@@ -1,10 +1,5 @@
 {
-    "ci-test": "protractor:e2e",
-    "test": [
-        "webdrivermanager:update",
-        "webdrivermanager:start",
-        "protractor:e2e"
-    ],
+    "test": "protractor:e2e",
     "build": "concurrent:build",
     "build:app:css" : "sass:build",
     "build:app:js" : "requirejs:build"

@@ -7,8 +7,7 @@
     "app": "node app.js",
     "app:install": "npm install -g bower grunt && bower install --allow-root && npm install",
     "app:build": "grunt build --verbose",
-    "app:test": "grunt test --verbose",
-    "app:ci-test": "grunt ci-test --verbose"
+    "app:test": "grunt test --verbose"
 
   },
   "repository": {
