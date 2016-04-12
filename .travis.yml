@@ -1,10 +1,9 @@
 language: node_js
 node_js:
-  - "4.2.6"
+  - "5.10.1"
 services:
   - docker
 before_install:
-  - node --version
   - docker run -d -p 4444:4444 --name selenium-hub selenium/hub:2.53.0
   - docker run -d --link selenium-hub:hub selenium/node-chrome:2.53.0
   - docker run -d --link selenium-hub:hub selenium/node-firefox:2.53.0
@@ -12,4 +11,4 @@ install:
   - npm run app:install
   - npm run app:build
 script:
-  - npm run app:ci-test
+  - npm run app:test
