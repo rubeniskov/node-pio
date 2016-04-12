@@ -1,12 +1,14 @@
 {
     "app": {
-        "app-css": {
-            "app/dist/main.css" : "app/scss/main.scss"
+        "dirname": "app",
+        "build": {
+            "css": {
+                "app/dist/main.css" : "app/scss/main.scss"
+            },
+            "js": {
+                "app/dist/main.js" : "app/script/main.js"
+            }
         },
-        "app-js": {
-            "app/dist/main.js" : "app/script/main.js"
-        },
-
         "paths": {
             "angular": "../lib/angular/angular.min",
             "angular-animate": "../lib/angular-animate/angular-animate.min",
