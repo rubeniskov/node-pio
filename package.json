@@ -6,7 +6,10 @@
   "scripts": {
     "app": "node app.js",
     "app:install": "npm install -g bower grunt && bower install --allow-root && npm install",
-    "app:build": "grunt build"
+    "app:build": "grunt build --verbose",
+    "app:test": "grunt test --verbose",
+    "app:ci-test": "grunt ci-test --verbose"
+
   },
   "repository": {
     "type": "git",
@@ -29,16 +32,13 @@
   },
   "homepage": "https://github.com/rubeniskov/node-pio",
   "dependencies": {
-    "angular": "^1.5.3",
     "body-parser": "^1.15.0",
-    "bootstrap-sass": "^3.3.6",
     "colors": "^1.1.2",
     "deep-extend": "^0.4.1",
     "express": "^4.13.4",
     "jsonwebtoken": "^5.7.0",
     "mongoose": "^4.4.11",
     "morgan": "^1.7.0",
-    "node-sass": "^3.4.2",
     "nomnom": "^1.8.1",
     "npm": "^3.8.5",
     "q": "^1.4.1",
@@ -50,16 +50,16 @@
     "grunt": "^1.0.1",
     "grunt-concurrent": "^2.3.0",
     "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-concat": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-cssmin": "^1.0.1",
     "grunt-contrib-htmlmin": "^1.3.0",
     "grunt-contrib-requirejs": "^1.0.0",
-    "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-filerev": "^2.3.1",
+    "grunt-notify": "^0.4.5",
+    "grunt-protractor-runner": "^3.1.0",
     "grunt-sass": "^1.1.0",
     "grunt-usemin": "^3.1.1",
+    "grunt-webdriver-manager": "0.0.6",
     "jshint-stylish": "^2.1.0",
     "load-grunt-tasks": "^3.5.0",
     "time-grunt": "^1.3.0"
