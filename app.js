@@ -1,9 +1,9 @@
 var express     = require('express'),
     path        = require('path'),
-    util        = require('util'),
     morgan      = require('morgan'),
     colors      = require('colors'),
     mongoose    = require('mongoose'),
+    fs          = require('fs'),
     app         = express(),
     opts        = require('nomnom')
         .usage('Start webserver.\nUsage: $0')
@@ -24,6 +24,10 @@ var express     = require('express'),
             default: 'config.json',
             help: 'JSON file with tests to run'
         })
+        .option('dirname', {
+            default: __dirname,
+            help: 'Root App directory'
+        })
         .option('version', {
             flag: true,
             help: 'print version and exit',
@@ -32,6 +36,8 @@ var express     = require('express'),
             }
         })
         .parse()
+
+var cfg     = JSON.parse(fs.readFileSync(opts.config, 'utf8'));
 
 //mongoose.connect('mongodb://localhost:27017/polls');
 
@@ -87,30 +93,21 @@ app.orm = require('./orm/orm.js')({
 
 app.io = require('socket.io')(app.server);
 
-app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/views/index.html');
-});
+// app.use(require('node-sass').middleware({
+//          src: __dirname + '/app/scss', //where the sass files are
+//          dest: __dirname + '/public', //where css should go
+//          debug: true // obvious
+// }));
 
-app.get('/views/:view', function(req, res) {
-    res.sendFile(__dirname + '/views/' + req.params.view);
-});
+app
+    .use('/api', require('./api/api.js')(app, opts, cfg.api))
+    .use('/',    require('./server/server.js')(app, opts, cfg.app))
+    .listen(opts.port, function() {
+        opts.debug && app.use(morgan('app'));
+        console.log('App listening on port ' + opts.port);
+    });
 
-app.get('/css', function(req, res) {
-    res.send('hello');
-});
-
-app.get('/js', function(req, res) {
-    res.send('hello');
-});
-
-app.use('/api', require('./api/api.js')(opts, app.orm));
-
-app.listen(opts.port, function() {
-    opts.debug && app.use(morgan('app'));
-    console.log('App listening on port ' + opts.port);
-});
-
-app.on('connection', function() {
+app.io.on('connection', function() {
     console.log('Socket.io Connected');
 });
 
