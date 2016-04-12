@@ -5,7 +5,7 @@ const   express     = require('express'),
         bodyParser  = require('body-parser'),
         secretToken = 'superSecret';
 
-module.exports = function(options, orm){
+module.exports = function(app, options){
 
     options.debug && router.use(morgan('api'));
 
@@ -38,7 +38,7 @@ module.exports = function(options, orm){
         })(req.body.token || req.query.token || req.headers['x-access-token']);
     });
 
-    require('./views/user.js')(router, orm);
+    require('./views/user.js')(router, app.orm);
 
     router.get('/', function(req, res) {
         res.json({ message: 'hooray! welcome to our api!' });
