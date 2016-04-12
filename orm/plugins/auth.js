@@ -407,13 +407,13 @@ module.exports = function(utils){
             };
 
             schema.add({
-                ownership: {
+                o: {
                     type: String,
                     default: function(){
                         return [_user, _groups[0]].join(':');
                     }
                 },
-                permissions: {
+                p: {
                     type: String,
                     default: function(){
                         return schema.options.permissions;
