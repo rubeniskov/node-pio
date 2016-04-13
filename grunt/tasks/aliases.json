@@ -1,5 +1,9 @@
 {
-    "test": "protractor:e2e",
+    "ci-test": [
+        "karma:ci-unit",
+        "protractor:ci-e2e"
+    ],
+    "live": "concurrent:live",
     "build": "concurrent:build",
     "build:app:css" : "sass:build",
     "build:app:js" : "requirejs:build"
