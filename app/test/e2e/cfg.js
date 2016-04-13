@@ -1,7 +1,7 @@
 exports.config = {
     allScriptsTimeout: 11000,
     framework: 'jasmine',
-    seleniumAddress: 'http://localhost:4444/wd/hub',
+    seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
     seleniumArgs: ['-browserTimeout=60'],
     allScriptsTimeout: 60000,
     getPageTimeout: 60000,
