@@ -11,4 +11,4 @@ install:
   - npm run app:install
   - npm run app:build
 script:
-  - npm run app:test
+  - npm run app:ci-test
