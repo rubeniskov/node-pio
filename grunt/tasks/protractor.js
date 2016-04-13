@@ -1,14 +1,20 @@
 module.exports = function(grunt, data) {
     return {
         options: {
-            keepAlive: true,
-            singleRun: false,
             configFile: "app/test/e2e/cfg.js"
         },
-        "e2e": {
+        "ci-e2e": {
             options: {
-                args: {
-                }
+                autoWatch: false,
+                singleRun: true,
+                args: {}
+            }
+        },
+        "live-e2e": {
+            options: {
+                autoWatch: true,
+                singleRun: false,
+                args: {}
             }
         }
     };
