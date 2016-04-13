@@ -1,70 +1,71 @@
 {
-    "name": "node-pio",
-    "version": "1.0.0-beta",
-    "description": "A simple polls manager using socket.io as connection protocol",
-    "main": "app.js",
-    "scripts": {
-        "app": "node app.js",
-        "app:install": "npm install -g bower grunt && bower install --allow-root && npm install",
-        "app:build": "grunt build --verbose",
-        "app:test": "grunt test --verbose",
-        "app:ci-test": "grunt ci-test"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/rubeniskov/node-pio.git"
-    },
-    "keywords": [
-        "polls",
-        "managment",
-        "quiz",
-        "websocket",
-        "angular",
-        "html5",
-        "express",
-        "socket"
-    ],
-    "author": "Rubén López Gómez",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/rubeniskov/node-pio/issues"
-    },
-    "homepage": "https://github.com/rubeniskov/node-pio",
-    "dependencies": {
-        "body-parser": "^1.15.0",
-        "colors": "^1.1.2",
-        "deep-extend": "^0.4.1",
-        "express": "^4.13.4",
-        "jsonwebtoken": "^5.7.0",
-        "mongoose": "^4.4.11",
-        "morgan": "^1.7.0",
-        "nomnom": "^1.8.1",
-        "npm": "^3.8.5",
-        "q": "^1.4.1",
-        "socket.io": "^1.4.5",
-        "twig": "^0.8.9",
-        "underscore": "^1.8.3"
-    },
-    "devDependencies": {
-        "grunt": "^1.0.1",
-        "grunt-concurrent": "^2.3.0",
-        "grunt-contrib-jshint": "^1.0.0",
-        "grunt-contrib-requirejs": "^1.0.0",
-        "grunt-contrib-watch": "^1.0.0",
-        "grunt-karma": "^0.12.2",
-        "grunt-notify": "^0.4.5",
-        "grunt-protractor-runner": "^3.1.0",
-        "grunt-sass": "^1.1.0",
-        "karma": "^0.13.22",
-        "karma-htmlfile-reporter": "^0.2.2",
-        "karma-mocha": "^0.2.2",
-        "karma-selenium-webdriver": "^1.0.21",
-        "karma-sinon-chai": "^1.2.0",
-        "load-grunt-config": "^0.19.1",
-        "load-grunt-tasks": "^3.5.0",
-        "mocha": "^2.4.5",
-        "jshint-stylish": "^2.1.0",
-        "sinon-chai": "^2.8.0",
-        "time-grunt": "^1.3.0"
-    }
+  "name": "node-pio",
+  "version": "1.0.0-beta",
+  "description": "A simple polls manager using socket.io as connection protocol",
+  "main": "app.js",
+  "scripts": {
+    "app": "node app.js",
+    "app:install": "npm install -g bower grunt && bower install --allow-root && npm install",
+    "app:build": "grunt build --verbose",
+    "app:test": "grunt test --verbose",
+    "app:ci-test": "grunt ci-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rubeniskov/node-pio.git"
+  },
+  "keywords": [
+    "polls",
+    "managment",
+    "quiz",
+    "websocket",
+    "angular",
+    "html5",
+    "express",
+    "socket"
+  ],
+  "author": "Rubén López Gómez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rubeniskov/node-pio/issues"
+  },
+  "homepage": "https://github.com/rubeniskov/node-pio",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "colors": "^1.1.2",
+    "deep-extend": "^0.4.1",
+    "express": "^4.13.4",
+    "jsonwebtoken": "^5.7.0",
+    "mongoose": "^4.4.11",
+    "morgan": "^1.7.0",
+    "nomnom": "^1.8.1",
+    "npm": "^3.8.5",
+    "q": "^1.4.1",
+    "socket.io": "^1.4.5",
+    "twig": "^0.8.9",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-concurrent": "^2.3.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-requirejs": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-karma": "^0.12.2",
+    "grunt-notify": "^0.4.5",
+    "grunt-protractor-runner": "^3.1.0",
+    "grunt-sass": "^1.1.0",
+    "jshint-stylish": "^2.1.0",
+    "karma": "^0.13.22",
+    "karma-htmlfile-reporter": "^0.2.2",
+    "karma-mocha": "^0.2.2",
+    "karma-mocha-reporter": "^2.0.0",
+    "karma-selenium-webdriver": "^1.0.22",
+    "karma-sinon-chai": "^1.2.0",
+    "load-grunt-config": "^0.19.1",
+    "load-grunt-tasks": "^3.5.0",
+    "mocha": "^2.4.5",
+    "sinon-chai": "^2.8.0",
+    "time-grunt": "^1.3.0"
+  }
 }
