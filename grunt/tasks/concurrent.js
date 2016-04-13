@@ -3,6 +3,7 @@ module.exports = function(grunt) {
         options: {
             logConcurrentOutput: true
         },
-        'build': ["build:app:css", "build:app:js"]
+        'build': ['build:app:css', 'build:app:js'],
+        'live': ['karma:live-unit', 'protractor:live-e2e', 'watch']
     };
 };
