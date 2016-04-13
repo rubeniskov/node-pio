@@ -6,5 +6,5 @@
     "live": "concurrent:live",
     "build": "concurrent:build",
     "build:app:css" : "sass:build",
-    "build:app:js" : "requirejs:build"
+    "build:app:js" : ["jshint:core-js", "requirejs:core-js"]
 }

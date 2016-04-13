@@ -4,7 +4,7 @@ module.exports = function(grunt, data) {
     var dist    = Object.keys(data.app.config.build.js)[0],
         source  = data.app.config.build.js[dist];
     return {
-        "build": {
+        "core-js": {
             options: {
                 baseUrl: path.dirname(source),
                 paths: '<%= app.config.paths %>',
