@@ -10,7 +10,7 @@ pids
 
 __MACOSX
 .DS_Store
-
+.fuse_hidden*
 .project
 .settings
 .classpath
