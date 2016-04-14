@@ -1,8 +1,8 @@
-define(["app"], function(app){
+define(['app'], function(app){
     app.service('apiService', ['$http', function ($http) {
 
         var self = this,
-            urlBase = '/api/user';
+            urlBase = 'http://172.17.0.1:8080/api/user';
 
         self.createUser = function (data) {
             return $http.put(urlBase, data);
