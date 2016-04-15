@@ -1,14 +1,14 @@
-const os = require('os');
-module.exports = function(grunt, data) {
-    var ifaces = os.networkInterfaces();
+
+module.exports = function(grunt, factory) {
     return {
         options: {
             configFile: "app/test/unit/cfg.js",
             seleniumConfig: {
-                hostname: ifaces['lo'][0].address,
+                logLevel: 'DEBUG', // LOG_DEBUG,
+                hostname: '<%= utils.getLocalhostAddress() %>',
                 port: 4444,
                 browser: {
-                    hostname: ifaces['docker0'][0].address
+                    hostname: '<%= utils.getSeleniumGatewayAddress() %>'
                 }
             }
         },
@@ -21,7 +21,8 @@ module.exports = function(grunt, data) {
         "live-unit": {
             options: {
                 autoWatch: true,
-                singleRun: false
+                singleRun: false,
+                usePolling: true
             }
         }
     };
