@@ -8,6 +8,7 @@ module.exports = function(grunt, factory) {
             baseUrl: path.dirname(source),
             paths: '<%= app.config.paths %>',
             shim: '<%= app.config.shim %>',
+            packages: '<%= app.config.packages %>',
             wrap: {
                 start: "(function() {",
                 end: "}());"
