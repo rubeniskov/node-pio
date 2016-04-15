@@ -9,7 +9,7 @@ module.exports = function(config) {
         reporters: ['progress', 'mocha', 'html'],
         files: [
             '../../dist/main.js',
-            '../../lib/angular-mocks.js',
+            '../../lib/angular-mocks/angular-mocks.js',
             'specs/spec-*.js'
         ],
         plugins: [
@@ -17,6 +17,7 @@ module.exports = function(config) {
             'karma-sinon-chai',
             'karma-selenium-webdriver',
             'karma-mocha-reporter',
+            //'karma-chai-as-promised',
             'karma-htmlfile-reporter'
         ],
         customLaunchers: {
@@ -42,10 +43,10 @@ module.exports = function(config) {
             pageTitle: 'Unit Tests'
         },
         mochaNodeOpts: {
-            defaultTimeoutInterval: 30000,
+            //defaultTimeoutInterval: 30000,
             showColors: true,
             isVerbose: true,
-            realtimeFailure: true,
+            //realtimeFailure: true,
             includeStackTrace: true
         },
         browsers: ['chrome', 'firefox']
