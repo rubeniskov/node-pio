@@ -14,7 +14,7 @@
     "test",
     "tests"
   ],
-  "dependencies": {
+  "devDependencies": {
     "angular-animate": "~1.5.0",
     "angular-sanitize": "~1.5.0",
     "angular-messages": "~1.5.0",
@@ -36,7 +36,8 @@
     "oclazyload": "^1.0.9",
     "angular-translate": "^2.11.0",
     "angular-local-storage": "^0.2.7",
-    "angular-url-parser": "^1.0.0"
+    "angular-url-parser": "^1.0.0",
+    "crypto-js": "^3.1.6"
   },
   "resolutions": {
     "jquery": "~2.1.4",
@@ -53,8 +54,5 @@
     "express",
     "socket"
   ],
-  "license": "MIT",
-  "devDependencies": {
-    "crypto-js": "^3.1.6"
-  }
+  "license": "MIT"
 }
