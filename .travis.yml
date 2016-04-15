@@ -10,5 +10,3 @@ before_install:
 install:
   - npm run app:install
   - npm run app:build
-script:
-  - npm run app:ci-test
