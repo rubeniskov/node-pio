@@ -1,23 +1,11 @@
-define(['app'], function(app){
-    app.service('apiService', ['$http', function ($http) {
+define(['app'], function(app) {
+    app
+        .constant('API_URL', 'http://' + window.location.hostname + ':8080/api')
+        .service('apiService', ['$http', 'API_URL', function($http, API_URL) {
+            var self = this;
 
-        var self = this,
-            urlBase = 'http://172.17.0.1:8080/api/user';
-
-        self.createUser = function (data) {
-            return $http.put(urlBase, data);
-        };
-
-        self.getUser = function (id) {
-            return $http.get(urlBase + '/' + id);
-        };
-
-        self.updateUser = function (id, data) {
-            return $http.post(urlBase + '/' + id, data);
-        };
-
-        self.deleteUser = function (id) {
-            return $http.delete(urlBase + '/' + id);
-        };
-    }]);
+            self.authenticate = function(data) {
+                return $http.post(API_URL + '/authenticate', data);
+            };
+        }]);
 });
