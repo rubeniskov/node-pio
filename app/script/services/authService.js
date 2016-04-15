@@ -1,14 +1,14 @@
-define(['app'], function(app){
-    app.service('authService', ['$q', 'apiService', 'md5', 'localStorageService', function ($q, apiService, md5, localStorageService) {
+define(['app', 'crypto-js'], function(app, crypto){
+    app.service('authService', ['$q', 'apiService', 'md5', 'jwtProvider', function ($q, apiService, md5, jwtProvider) {
 
         var self = this;
 
         self.signIn = function (id, password) {
             return apiService.authenticate({
                 id: id,
-                password: md5.createHash(password)
+                password: crypto.HmacSHA1(password, 'secret')
             }).then(function(response){
-                localStorageService.set('x-access-token', response.data.token);
+                jwtProvider.setToken(response.data.token);
             });
         };
 
@@ -17,7 +17,7 @@ define(['app'], function(app){
         };
 
         self.signOut = function (username, password) {
-                localStorageService.remove('x-access-token');
+                jwtProvider.removeToken();
             return $q.resolve();
         };
     }]);

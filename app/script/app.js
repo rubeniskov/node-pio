@@ -7,7 +7,6 @@ define([
     'angular-bootstrap',
     'angular-oclazyload',
     'angular-local-storage',
-    'angular-md5',
     'angular-url-parser'
 ], function(angular) {
     return angular.module('pio', [
@@ -18,16 +17,14 @@ define([
             'ui.bootstrap',
             'oc.lazyLoad',
             'LocalStorageModule',
-            'angular-md5',
             'urlParser'
         ])
-        .run(function($rootScope, $state) {
+        .run(function($rootScope, $state, jwtProvider) {
             $rootScope.$state = $state;
-
-            $rootScope.$on('$stateChangeStart', function(e, to) {
+            $rootScope.$on('$stateChangeStart', function($event, to) {
                 if (to.data && to.data.requiresLogin) {
-                    if (!store.get('jwt') || jwtHelper.isTokenExpired(store.get('jwt'))) {
-                        e.preventDefault();
+                    if (jwtProvider.isTokenExpired()) {
+                        $event.preventDefault();
                         $state.go('login');
                     }
                 }

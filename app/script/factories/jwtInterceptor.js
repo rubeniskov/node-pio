@@ -1,8 +1,8 @@
 define(['app'], function(app) {
-    app.factory('jwtInterceptor', ['$q', 'localStorageService', function($q, localStorageService) {
+    app.factory('jwtInterceptor', ['$q', 'localStorageService', 'jwtProvider', 'JWT_HEADER', function($q, localStorageService, jwtProvider, JWT_HEADER) {
         return {
             'request': function(config) {
-                config.headers['x-access-token'] = localStorageService.get('x-access-token');
+                config.headers[JWT_HEADER] = jwtProvider.getToken();
                 return config;
             },
             'requestError': function(rejection) {
