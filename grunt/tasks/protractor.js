@@ -1,7 +1,8 @@
 module.exports = function(grunt, data) {
     return {
         options: {
-            configFile: "app/test/e2e/cfg.js"
+            configFile: "app/test/e2e/cfg.js",
+            baseURL: '<%= utils.getSeleniumGatewayAddress() %>'
         },
         "ci-e2e": {
             options: {
