@@ -1,5 +1,5 @@
 define(['app', 'crypto-js'], function(app, crypto){
-    app.service('authService', ['$q', 'apiService', 'md5', 'jwtProvider', function ($q, apiService, md5, jwtProvider) {
+    app.service('authService', ['$q', 'apiService', 'jwtProvider', function ($q, apiService, jwtProvider) {
 
         var self = this;
 
