@@ -1,22 +1,28 @@
-const   path = require('path');
+const path = require('path');
 
-module.exports = function(grunt, data) {
-    var dist    = Object.keys(data.app.config.build.js)[0],
-        source  = data.app.config.build.js[dist];
+module.exports = function(grunt, factory) {
+    var dist = Object.keys(factory.app.config.build.js)[0],
+        source = factory.app.config.build.js[dist];
     return {
-        "core-js": {
+        options: {
+            baseUrl: path.dirname(source),
+            paths: '<%= app.config.paths %>',
+            shim: '<%= app.config.shim %>',
+            wrap: {
+                start: "(function() {",
+                end: "}());"
+            },
+            include: ['../lib/almond/almond', path.basename(source)],
+            out: dist
+        },
+        "build": {
             options: {
-                baseUrl: path.dirname(source),
-                paths: '<%= app.config.paths %>',
-                shim: '<%= app.config.shim %>',
                 optimize: "uglify2",
-
-                wrap: {
-                    start: "(function() {",
-                    end: "}());"
-                },
-                include: ['../lib/almond/almond', path.basename(source)],
-                out: dist
+            }
+        },
+        "live": {
+            options: {
+                optimize: 'none'
             }
         }
     };
