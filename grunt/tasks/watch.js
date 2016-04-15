@@ -14,7 +14,7 @@ module.exports = function(grunt, data) {
                     // }
                 },
                 files: 'app/script/{,*/}*.js',
-                tasks: ['jshint:core-js', 'requirejs']
+                tasks: ['jshint:core-js', 'requirejs:live']
             };
         })(),
         "core-css": {
