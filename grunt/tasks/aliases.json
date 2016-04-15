@@ -1,14 +1,10 @@
 {
-    "build": [
-        "clean:dist",
-        "less",
-        "useminPrepare",
-        "concat",
-        "copy:dist",
-        "cssmin",
-        "uglify",
-        "filerev",
-        "usemin",
-        "htmlmin"
-    ]
+    "ci-test": [
+        "karma:ci-unit",
+        "protractor:ci-e2e"
+    ],
+    "live": "concurrent:live",
+    "build": "concurrent:build",
+    "build:app:css" : "sass:build",
+    "build:app:js" : ["jshint:core-js", "requirejs:build"]
 }

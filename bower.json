@@ -9,28 +9,50 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components"
+    "bower_components",
+    "app/lib",
+    "test",
+    "tests"
   ],
-  "dependencies": {
+  "devDependencies": {
     "angular-animate": "~1.5.0",
     "angular-sanitize": "~1.5.0",
     "angular-messages": "~1.5.0",
     "angular-aria": "~1.5.0",
     "angular-socket-io": "~0.7.0",
-    "angular-resource": "~1.5.0",
+    "angular-resource": "^1.5.3",
     "angular-ui-router": "~0.2.15",
-    "bootstrap": "~3.3.6",
+    "angular-mocks": "^1.5.3",
     "angular-bootstrap": "~1.1.2",
+    "bootstrap": "~3.3.6",
     "moment": "~2.10.6",
     "animate.css": "~3.4.0",
     "angular": "~1.5.0",
     "pace": "~1.0.2",
     "metisMenu": "~2.0.2",
     "fontawesome": "~4.5.0",
-    "almond": "^0.3.2"
+    "almond": "^0.3.2",
+    "bootstrap-sass": "^3.3.6",
+    "oclazyload": "^1.0.9",
+    "angular-translate": "^2.11.0",
+    "angular-local-storage": "^0.2.7",
+    "angular-url-parser": "^1.0.0",
+    "crypto-js": "^3.1.6"
   },
   "resolutions": {
     "jquery": "~2.1.4",
     "angular": "~1.5.0"
-  }
+  },
+  "homepage": "https://github.com/rubeniskov/node-pio",
+  "keywords": [
+    "polls",
+    "managment",
+    "quiz",
+    "websocket",
+    "angular",
+    "html5",
+    "express",
+    "socket"
+  ],
+  "license": "MIT"
 }

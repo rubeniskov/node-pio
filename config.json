@@ -1,29 +1,37 @@
 {
     "app": {
-        "app-css": {
-            "app/dist/main.css" : "app/scss/main.scss"
+        "dirname": "app",
+        "build": {
+            "css": {
+                "app/dist/main.css" : "app/scss/main.scss"
+            },
+            "js": {
+                "app/dist/main.js" : "app/script/main.js"
+            }
         },
-        "app-js": {
-            "app/dist/main.js" : "app/script/main.js"
-        },
-
         "paths": {
             "angular": "../lib/angular/angular.min",
+            "angular-translate": "../lib/angular-translate/angular-translate.min",
             "angular-animate": "../lib/angular-animate/angular-animate.min",
+            "angular-resource": "../lib/angular-resource/angular-resource.min",
             "angular-aria": "../lib/angular-aria/angular-aria.min",
+            "angular-url-parser":  "../lib/angular-url-parser/dist/angular-url-parser.min",
             "angular-bootstrap": "../lib/angular-bootstrap/ui-bootstrap.min",
             "angular-messages": "../lib/angular-messages/angular-messages.min",
             "angular-resource": "../lib/angular-resource/angular-resource.min",
             "angular-sanitize": "../lib/angular-sanitize/angular-sanitize.min",
             "angular-socket-io": "../lib/angular-socket-io/socket.min",
             "angular-ui-router": "../lib/angular-ui-router/release/angular-ui-router.min",
+            "angular-oclazyload": "../lib/oclazyload/dist/ocLazyLoad.min",
+            "angular-local-storage": "../lib/angular-local-storage/dist/angular-local-storage.min",
             "jquery": "../lib/jquery/dist/jquery.min",
             "moment": "../lib/moment/min/moment-with-locales.min",
             "pace": "../lib/pace/pace.min"
         },
         "shim": {
             "angular": {
-                "exports": "angular"
+                "exports": "angular",
+                "deps": ["jquery"]
             },
             "angular-animate": {
                 "deps": ["angular"]
@@ -49,6 +57,13 @@
             "angular-ui-router": {
                 "deps": ["angular"]
             }
+        },
+        "packages": [
+        {
+            "name": "crypto-js",
+            "location": "../lib/crypto-js",
+            "main": "index"
         }
+    ]
     }
 }
