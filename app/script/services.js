@@ -1,4 +1,5 @@
 require([
-    'services/api',
-    'services/io'
+    'services/apiService',
+    'services/ioService',
+    'services/authService'
 ]);
