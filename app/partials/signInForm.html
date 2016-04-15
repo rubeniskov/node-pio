@@ -1,0 +1,7 @@
+<form class="m-t" role="form">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="ID" ng-model="$ctrl.id" required=""/> </div>
+    <div class="form-group">
+        <input-password ng-model="$ctrl.password"></input-password>
+    </div>
+    <button type="submit" class="btn btn-primary block full-width m-b" ng-click="$ctrl.signIn()">{{ 'SIGN_IN' | translate }}</button> <a ui-sref="forgot_password"><small>{{ 'FORGOT_PASSWORD' | translate }}</small></a> </form>
