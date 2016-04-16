@@ -30,6 +30,7 @@ module.exports = function(app, opts, cfg){
             .use(require('./index.js')(app, opts, cfg, utils))
             .use(require('./dist.js')(app, opts, cfg, utils))
             .use(require('./view.js')(app, opts, cfg, utils))
+            .use(require('./font.js')(app, opts, cfg, utils))
             .use(require('./partial.js')(app, opts, cfg, utils))
             .use(require('./media.js')(app, opts, cfg, utils))
             .use(require('./error.js')(app, opts, cfg, utils));
