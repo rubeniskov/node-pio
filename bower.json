@@ -37,7 +37,14 @@
     "angular-translate": "^2.11.0",
     "angular-local-storage": "^0.2.7",
     "angular-url-parser": "^1.0.0",
-    "crypto-js": "^3.1.6"
+    "crypto-js": "^3.1.6",
+    "font-awesome-sass": "^4.5.0",
+    "underscore": "^1.8.3",
+    "angular-peity": "^0.0.4",
+    "angular-breadcrumb": "^0.4.1",
+    "bootstrap-markdown": "^2.10.0",
+    "angular-datatables": "^0.5.4",
+    "angular-loading-bar": "^0.9.0"
   },
   "resolutions": {
     "jquery": "~2.1.4",
