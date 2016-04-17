@@ -1,0 +1,10 @@
+.table-detail {
+    & > tbody > tr {
+        padding: 20px;
+        border-bottom: solid $gray 2px;
+        background-color: $white;
+        & > td {
+            padding: 20px;
+        }
+    }
+}
