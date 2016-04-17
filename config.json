@@ -3,19 +3,39 @@
         "dirname": "app",
         "build": {
             "css": {
-                "app/dist/main.css" : "app/scss/main.scss"
+                "app/dist/main.css": "app/scss/main.scss"
             },
             "js": {
-                "app/dist/main.js" : "app/script/main.js"
+                "app/dist/main.js": "app/src/main.js"
             }
         },
+        "fonts": {
+            "font-awesome": "app/lib/font-awesome-sass/assets/fonts/font-awesome",
+            "bootstrap": "app/lib/bootstrap-sass/assets/fonts/bootstrap"
+        },
+        "appDir": "src",
+        "baseUrl": "dist",
+        "dir": "dist",
+        "modules": [{
+            "name": "main",
+            "includes": [
+                "app",
+                "config",
+                "services",
+                "controllers",
+                "factories",
+                "components",
+                "directives"
+            ]
+        }],
         "paths": {
             "angular": "../lib/angular/angular.min",
+            "angular-mocks": "../lib/angular-mocks/angular-mocks",
             "angular-translate": "../lib/angular-translate/angular-translate.min",
             "angular-animate": "../lib/angular-animate/angular-animate.min",
             "angular-resource": "../lib/angular-resource/angular-resource.min",
             "angular-aria": "../lib/angular-aria/angular-aria.min",
-            "angular-url-parser":  "../lib/angular-url-parser/dist/angular-url-parser.min",
+            "angular-url-parser": "../lib/angular-url-parser/dist/angular-url-parser.min",
             "angular-bootstrap": "../lib/angular-bootstrap/ui-bootstrap.min",
             "angular-messages": "../lib/angular-messages/angular-messages.min",
             "angular-resource": "../lib/angular-resource/angular-resource.min",
@@ -24,6 +44,7 @@
             "angular-ui-router": "../lib/angular-ui-router/release/angular-ui-router.min",
             "angular-oclazyload": "../lib/oclazyload/dist/ocLazyLoad.min",
             "angular-local-storage": "../lib/angular-local-storage/dist/angular-local-storage.min",
+            "almond": "../lib/almond/almond",
             "jquery": "../lib/jquery/dist/jquery.min",
             "moment": "../lib/moment/min/moment-with-locales.min",
             "pace": "../lib/pace/pace.min"
@@ -58,12 +79,10 @@
                 "deps": ["angular"]
             }
         },
-        "packages": [
-        {
+        "packages": [{
             "name": "crypto-js",
             "location": "../lib/crypto-js",
             "main": "index"
-        }
-    ]
+        }]
     }
 }
