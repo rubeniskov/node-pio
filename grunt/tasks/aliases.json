@@ -1,7 +1,7 @@
 {
     "ci-test": [
-        "karma:ci-unit",
-        "protractor:ci-e2e"
+        "requirejs:ci-unit",
+        "karma:ci-unit"
     ],
     "live": "concurrent:live",
     "build": "concurrent:build",
