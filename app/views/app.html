@@ -1,0 +1,16 @@
+<!-- Wrapper-->
+<div id="wrapper" class="top-navigation">
+    <!-- Navigation -->
+    <div ng-include="'partial/topnavbar.html'"></div>
+    <!-- Page wraper -->
+    <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
+        <!-- Top view  -->
+        <div ui-view="top-view"></div>
+        <!-- Main view  -->
+        <div ui-view="main-view"></div>
+        <!-- Footer -->
+        <div ui-view="footer-view"></div>
+    </div>
+    <!-- End page wrapper-->
+</div>
+<!-- End wrapper-->
