@@ -1,0 +1,30 @@
+<div class="row border-bottom white-bg">
+    <nav class="navbar navbar-static-top" role="navigation">
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                <i class="fa fa-reorder"></i>
+            </button>
+            <a href="#" class="navbar-brand">PI<span>O</span></a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li ui-sref-active="active">
+                    <a ui-sref="app.dashboard">{{ 'DASHBOARD' | translate }}</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="app.admin.poll" href>{{ 'POLLS' | translate }}</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="app.admin.user" href>{{ 'USERS' | translate }}</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a ng-click="auth.signOut()">
+                        <i class="fa fa-sign-out"></i> {{ 'SIGN_OUT' | translate }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
