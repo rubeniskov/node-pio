@@ -12,9 +12,17 @@ module.exports = function(app, options) {
     router.use(bodyParser.urlencoded({
         extended: true
     }));
+    
     router.use(bodyParser.json());
 
     router.post('/authenticate', function(req, res) {
+
+        if(false) {
+            res.status(401).json({
+                message: 'Auth failed!'
+            });
+        }
+
         var token = jwt.sign({
             username: 'test',
             role: 'ADMIN'
@@ -41,6 +49,7 @@ module.exports = function(app, options) {
     });
 
     require('./views/user.js')(router, app.orm);
+    require('./views/poll.js')(router, app.orm);
 
     router.get('/', function(req, res) {
         res.json({
