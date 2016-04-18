@@ -30,7 +30,8 @@ module.exports = function(grunt, factory) {
             'peity': '../lib/peity/jquery.peity',
             'moment': '../lib/moment/min/moment-with-locales',
             'pace': '../lib/pace/pace',
-            'crypto-js': '../lib/crypto-js/index'
+            'crypto-js': '../lib/crypto-js/index',
+            'socket-io': '../lib/socket.io-client/socket.io'
         },
         lnames = factory.utils.keys(libs);
 
@@ -54,6 +55,9 @@ module.exports = function(grunt, factory) {
                 },
                 'angular-datatables': {
                     deps: ['datatables']
+                },
+                'angular-socket-io': {
+                    deps: ['socket-io']
                 },
                 'peity': {
                     deps: ['jquery']

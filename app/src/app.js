@@ -11,7 +11,8 @@ define(['angular',
     'angular-local-storage',
     'angular-url-parser',
     'angular-breadcrumb',
-    'angular-datatables'
+    'angular-datatables',
+    'angular-socket-io'
 ], function(angular) {
     return angular.module('pio', [
             'ngSanitize',
@@ -26,7 +27,8 @@ define(['angular',
             'LocalStorageModule',
             'urlParser',
             'ncy-angular-breadcrumb',
-            'datatables'
+            'datatables',
+            'btford.socket-io'
         ])
         .run(function($rootScope, $state, jwtProvider) {
             $rootScope.$state = $state;
