@@ -4,11 +4,11 @@ module.exports = function(grunt) {
             reporter: require('jshint-stylish'),
             force: true
         },
-        'core-js': {
+        'build': {
             options: {
                 jshintrc: true
             },
-            src: 'app/script/{,*/}*.js'
+            src: 'app/src/{,*/}*.js'
         }
     };
 };

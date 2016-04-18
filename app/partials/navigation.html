@@ -2,16 +2,11 @@
     <div class="sidebar-collapse">
         <ul side-navigation class="nav metismenu" id="side-menu">
             <li class="nav-header">
-
-                <div class="profile-element" uib-dropdown>
-                    <img alt="image" class="img-circle" src="img/profile_small.jpg"/>
-                    <a uib-dropdown-toggle href>
-                            <span class="clear">
+                <div class="profile-element" uib-dropdown> <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                    <a uib-dropdown-toggle href> <span class="clear">
                                 <span class="block m-t-xs">
                                     <strong class="font-bold">David Williams</strong>
-                             </span>
-                                <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
-                            </span>
+                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span>
                     </a>
                     <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
                         <li><a ui-sref="app.profile">Profile</a></li>
@@ -21,12 +16,9 @@
                         <li><a ui-sref="login">Logout</a></li>
                     </ul>
                 </div>
-                <div class="logo-element">
-                    IN+
-                </div>
+                <div class="logo-element"> IN+ </div>
             </li>
-            <li ng-class="{active: $state.includes('dashboards')}">
-                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">{{ 'DASHBOARD' | translate }}</span> <span class="fa arrow"></span></a>
+            <li ng-class="{active: $state.includes('dashboards')}"> <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">{{ 'DASHBOARD' | translate }}</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('dashboards')}">
                     <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_1">{{ 'DASHBOARD' | translate }} v.1</a></li>
                     <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_2">{{ 'DASHBOARD' | translate }} v.2</a></li>
@@ -35,12 +27,8 @@
                     <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_5">{{ 'DASHBOARD' | translate }} v.5 <span class="label label-primary pull-right">NEW</span></a></li>
                 </ul>
             </li>
-            <li ui-sref-active="active">
-                <a ui-sref="layouts"><i class="fa fa-diamond"></i> <span class="nav-label">{{ 'LAYOUTS' | translate }}</span> </a>
-            </li>
-
-            <li ng-class="{active: $state.includes('charts')}">
-                <a href=""><i class="fa fa-bar-chart-o"></i> <span class="nav-label">{{ 'GRAPHS' | translate }}</span><span class="fa arrow"></span></a>
+            <li ui-sref-active="active"> <a ui-sref="layouts"><i class="fa fa-diamond"></i> <span class="nav-label">{{ 'LAYOUTS' | translate }}</span> </a> </li>
+            <li ng-class="{active: $state.includes('charts')}"> <a href=""><i class="fa fa-bar-chart-o"></i> <span class="nav-label">{{ 'GRAPHS' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('charts')}">
                     <li ui-sref-active="active"><a ui-sref="charts.flot_chart">Flot Charts</a></li>
                     <li ui-sref-active="active"><a ui-sref="charts.rickshaw_chart">Rickshaw Charts</a></li>
@@ -51,8 +39,7 @@
                     <li ui-sref-active="active"><a ui-sref="charts.sparkline_chart">Sparkline Charts</a></li>
                 </ul>
             </li>
-            <li ng-class="{active: $state.includes('mailbox')}">
-                <a ui-sref="inbox"><i class="fa fa-envelope"></i> <span class="nav-label">{{ 'MAILBOX' | translate }} </span><span class="label label-warning pull-right">16/24</span></a>
+            <li ng-class="{active: $state.includes('mailbox')}"> <a ui-sref="inbox"><i class="fa fa-envelope"></i> <span class="nav-label">{{ 'MAILBOX' | translate }} </span><span class="label label-warning pull-right">16/24</span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('mailbox')}">
                     <li ui-sref-active="active"><a ui-sref="mailbox.inbox">Inbox</a></li>
                     <li ui-sref-active="active"><a ui-sref="mailbox.email_view">Email view</a></li>
@@ -60,14 +47,9 @@
                     <li ui-sref-active="active"><a ui-sref="mailbox.email_template">Email template</a></li>
                 </ul>
             </li>
-            <li ui-sref-active="active">
-                <a ui-sref="metrics"><i class="fa fa-pie-chart"></i> <span class="nav-label">{{ 'METRICS' | translate }}</span> </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="widgets"><i class="fa fa-flask"></i> <span class="nav-label">{{ 'WIDGETS' | translate }}</span></a>
-            </li>
-            <li ng-class="{active: $state.includes('forms')}">
-                <a href=""><i class="fa fa-edit"></i> <span class="nav-label">{{ 'FORMS' | translate }}</span><span class="fa arrow"></span></a>
+            <li ui-sref-active="active"> <a ui-sref="metrics"><i class="fa fa-pie-chart"></i> <span class="nav-label">{{ 'METRICS' | translate }}</span> </a> </li>
+            <li ui-sref-active="active"> <a ui-sref="widgets"><i class="fa fa-flask"></i> <span class="nav-label">{{ 'WIDGETS' | translate }}</span></a> </li>
+            <li ng-class="{active: $state.includes('forms')}"> <a href=""><i class="fa fa-edit"></i> <span class="nav-label">{{ 'FORMS' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('forms')}">
                     <li ui-sref-active="active"><a ui-sref="forms.basic_form">Basic form</a></li>
                     <li ui-sref-active="active"><a ui-sref="forms.advanced_plugins">Advanced Plugins</a></li>
@@ -77,8 +59,7 @@
                     <li ui-sref-active="active"><a ui-sref="forms.markdown">Markdown</a></li>
                 </ul>
             </li>
-            <li ng-class="{active: $state.includes('app')}">
-                <a href=""><i class="fa fa-desktop"></i> <span class="nav-label">{{ 'APPVIEWS' | translate }}</span>  <span class="pull-right label label-primary">SPECIAL</span></a>
+            <li ng-class="{active: $state.includes('app')}"> <a href=""><i class="fa fa-desktop"></i> <span class="nav-label">{{ 'APPVIEWS' | translate }}</span>  <span class="pull-right label label-primary">SPECIAL</span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('app')}">
                     <li ui-sref-active="active"><a ui-sref="app.contacts">Contacts</a></li>
                     <li ui-sref-active="active"><a ui-sref="app.profile">Profile</a></li>
@@ -101,8 +82,7 @@
                     <li ui-sref-active="active"><a ui-sref="app.invoice">Invoice</a></li>
                 </ul>
             </li>
-            <li ng-class="{active: $state.includes('pages')}">
-                <a href=""><i class="fa fa-files-o"></i> <span class="nav-label">{{ 'OTHERPAGES' | translate }}</span><span class="fa arrow"></span></a>
+            <li ng-class="{active: $state.includes('pages')}"> <a href=""><i class="fa fa-files-o"></i> <span class="nav-label">{{ 'OTHERPAGES' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('pages')}">
                     <li ui-sref-active="active"><a ui-sref="pages.search_results">Search results</a></li>
                     <li><a ui-sref="lockscreen">Lockscreen</a></li>
@@ -115,8 +95,7 @@
                     <li ui-sref-active="active"><a ui-sref="pages.empy_page">Empty page</a></li>
                 </ul>
             </li>
-            <li ng-class="{active: $state.includes('miscellaneous')}">
-                <a href=""><i class="fa fa-globe"></i> <span class="nav-label">{{ 'MISCELLANEOUS' | translate }}</span> <span class="label label-info pull-right">NEW</span></a>
+            <li ng-class="{active: $state.includes('miscellaneous')}"> <a href=""><i class="fa fa-globe"></i> <span class="nav-label">{{ 'MISCELLANEOUS' | translate }}</span> <span class="label label-info pull-right">NEW</span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('miscellaneous')}">
                     <li ui-sref-active="active"><a ui-sref="miscellaneous.notify">Notification</a></li>
                     <li ui-sref-active="active"><a ui-sref="miscellaneous.nestable_list">Nestable list</a></li>
@@ -143,8 +122,7 @@
                     <li ui-sref-active="active"><a ui-sref="miscellaneous.tour">Tour</a></li>
                 </ul>
             </li>
-            <li ng-class="{active: $state.includes('ui')}">
-                <a href=""><i class="fa fa-flask"></i> <span class="nav-label">{{ 'UIELEMENTS' | translate }}</span><span class="fa arrow"></span></a>
+            <li ng-class="{active: $state.includes('ui')}"> <a href=""><i class="fa fa-flask"></i> <span class="nav-label">{{ 'UIELEMENTS' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('ui')}">
                     <li ui-sref-active="active"><a ui-sref="ui.typography">Typography</a></li>
                     <li ui-sref-active="active"><a ui-sref="ui.icons">Icons</a></li>
@@ -157,11 +135,8 @@
                     <li ui-sref-active="active"><a ui-sref="ui.badges_labels">Badges, Labels, Progress</a></li>
                 </ul>
             </li>
-            <li ui-sref-active="active">
-                <a ui-sref="grid_options"><i class="fa fa-laptop"></i> <span class="nav-label">{{ 'GRIDOPTIONS' | translate }}</span></a>
-            </li>
-            <li ng-class="{active: $state.includes('tables')}">
-                <a href=""><i class="fa fa-table"></i> <span class="nav-label">{{ 'TABLES' | translate }}</span><span class="fa arrow"></span></a>
+            <li ui-sref-active="active"> <a ui-sref="grid_options"><i class="fa fa-laptop"></i> <span class="nav-label">{{ 'GRIDOPTIONS' | translate }}</span></a> </li>
+            <li ng-class="{active: $state.includes('tables')}"> <a href=""><i class="fa fa-table"></i> <span class="nav-label">{{ 'TABLES' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('tables')}">
                     <li ui-sref-active="active"><a ui-sref="tables.static_table">Static Tables</a></li>
                     <li ui-sref-active="active"><a ui-sref="tables.data_tables">Data Tables</a></li>
@@ -169,8 +144,7 @@
                     <li ui-sref-active="active"><a ui-sref="tables.nggrid">NG Grid</a></li>
                 </ul>
             </li>
-            <li ng-class="{active: $state.includes('commerce')}">
-                <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">{{ 'COMMERCE' | translate }}</span><span class="fa arrow"></span></a>
+            <li ng-class="{active: $state.includes('commerce')}"> <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">{{ 'COMMERCE' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('commerce')}">
                     <li ui-sref-active="active"><a ui-sref="commerce.products_grid">Products grid</a></li>
                     <li ui-sref-active="active"><a ui-sref="commerce.product_list">Products list</a></li>
@@ -181,47 +155,29 @@
                     <li ui-sref-active="active"><a ui-sref="commerce.payments">Credit Card form</a></li>
                 </ul>
             </li>
-            <li ng-class="{active: $state.includes('gallery')}">
-                <a href=""><i class="fa fa-picture-o"></i> <span class="nav-label">{{ 'GALLERY' | translate }}</span><span class="fa arrow"></span></a>
+            <li ng-class="{active: $state.includes('gallery')}"> <a href=""><i class="fa fa-picture-o"></i> <span class="nav-label">{{ 'GALLERY' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('gallery')}">
                     <li ui-sref-active="active"><a ui-sref="gallery.basic_gallery">Lightbox Gallery</a></li>
                     <li ui-sref-active="active"><a ui-sref="gallery.slick_gallery">Slick Carousel</a></li>
                     <li ui-sref-active="active"><a ui-sref="gallery.bootstrap_carousel">Bootstrap Carousel</a></li>
-
                 </ul>
             </li>
-            <li>
-                <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ 'MENULEVELS' | translate }}</span><span class="fa arrow"></span></a>
+            <li> <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ 'MENULEVELS' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li>
-                        <a href="">Third Level <span class="fa arrow"></span></a>
+                    <li> <a href="">Third Level <span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
-                            <li>
-                                <a href="">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="">Third Level Item</a>
-                            </li>
-
+                            <li> <a href="">Third Level Item</a> </li>
+                            <li> <a href="">Third Level Item</a> </li>
+                            <li> <a href="">Third Level Item</a> </li>
                         </ul>
                     </li>
                     <li><a href="">Second Level Item</a></li>
-                    <li>
-                        <a href="">Second Level Item</a></li>
-                    <li>
-                        <a href="">Second Level Item</a></li>
+                    <li> <a href="">Second Level Item</a></li>
+                    <li> <a href="">Second Level Item</a></li>
                 </ul>
             </li>
-            <li ui-sref-active="active">
-                <a ui-sref="css_animations"><i class="fa fa-magic"></i> <span class="nav-label">{{ 'ANIMATIONS' | translate }}</span><span class="label label-info pull-right">62</span></a>
-            </li>
-            <li class="landing_link">
-                <a ui-sref="landing"><i class="fa fa-star"></i> <span class="nav-label">{{ 'LANDING' | translate }}</span> <span class="label label-warning pull-right">NEW</span></a>
-            </li>
+            <li ui-sref-active="active"> <a ui-sref="css_animations"><i class="fa fa-magic"></i> <span class="nav-label">{{ 'ANIMATIONS' | translate }}</span><span class="label label-info pull-right">62</span></a> </li>
+            <li class="landing_link"> <a ui-sref="landing"><i class="fa fa-star"></i> <span class="nav-label">{{ 'LANDING' | translate }}</span> <span class="label label-warning pull-right">NEW</span></a> </li>
         </ul>
-
     </div>
 </nav>

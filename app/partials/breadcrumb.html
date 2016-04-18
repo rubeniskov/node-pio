@@ -1,0 +1,14 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>{{ 'ADMINISTRATION' | translate }}</h2>
+        <ol class="breadcrumb" ncy-breadcrumb>
+        </ol>
+    </div>
+    <div class="col-sm-8" ng-if="$state.current.url !== '/create'">
+        <div class="box-tools pull-right">
+            <p>&nbsp;</p>
+            <button type="button" class="btn btn-primary btn-lg" ui-sref="{{$state.current.name}}.create"><i class="fa fa-plus"></i> {{ "CREATE" | translate }}</button>
+        </div>
+    </div>
+</div>
+

@@ -1,10 +1,10 @@
 {
     "ci-test": [
-        "karma:ci-unit",
-        "protractor:ci-e2e"
+        "requirejs:ci-unit",
+        "karma:ci-unit"
     ],
     "live": "concurrent:live",
     "build": "concurrent:build",
     "build:app:css" : "sass:build",
-    "build:app:js" : ["jshint:core-js", "requirejs:build"]
+    "build:app:js" : ["jshint:build", "requirejs:build"]
 }

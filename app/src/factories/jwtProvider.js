@@ -11,7 +11,7 @@ define(['app'], function(app) {
                 localStorageService.remove(JWT_HEADER);
             },
             isTokenExpired: function(){
-                !!localStorageService.get(JWT_HEADER);
+                return !localStorageService.get(JWT_HEADER);
             }
         };
     }]);
