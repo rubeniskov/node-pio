@@ -5,6 +5,7 @@ var express     = require('express'),
     mongoose    = require('mongoose'),
     fs          = require('fs'),
     app         = express(),
+    http        = require( 'http' ).createServer( app ),
     opts        = require('nomnom')
         .usage('Start webserver.\nUsage: $0')
         .option('port', {
@@ -91,8 +92,6 @@ app.orm = require('./orm/orm.js')({
     db: 'polls'
 });
 
-app.io = require('socket.io')(app.server);
-
 // app.use(require('node-sass').middleware({
 //          src: __dirname + '/app/scss', //where the sass files are
 //          dest: __dirname + '/public', //where css should go
@@ -101,15 +100,10 @@ app.io = require('socket.io')(app.server);
 
 app
     .use('/api', require('./api/api.js')(app, opts, cfg.api))
-    .use('/',    require('./server/server.js')(app, opts, cfg.app))
-    .listen(opts.port, function() {
-        opts.debug && app.use(morgan('app'));
-        console.log('App listening on port ' + opts.port);
-    });
+    .use('/',    require('./server/server.js')(app, opts, cfg.app));
 
-app.io.on('connection', function() {
-    console.log('Socket.io Connected');
-});
+
+app.io = require('./io/io.js')(http);
 
 //console.log(orm.models.role.read);
 
@@ -138,3 +132,8 @@ app.orm.models.user.create({
 // }, function(err){
 //     console.log('Error', err, JSON.stringify(err, null , 4));
 // });
+
+http.listen(opts.port, function() {
+        opts.debug && app.use(morgan('app'));
+        console.log('App listening on port ' + opts.port);
+    });
