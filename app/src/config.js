@@ -1,7 +1,7 @@
 define(['app', 'route', 'i18n'], function(app, route, i18n) {
     return app
         .constant('JWT_HEADER', 'x-access-token')
-        .constant('API_URL', 'http://' + window.location.hostname + ':8080/api')
+        .constant('API_URL', 'http://' + window.location.hostname + ':' + window.location.port + '/api')
         .config(function(
             $locationProvider,
             $stateProvider,

@@ -1,10 +1,9 @@
 define(['app'], function(app){
-    app.service('userService', ['$resource', function ($resource) {
+    app.service('userService', function ($resource, API_URL) {
 
         var self = this,
-            urlBase = 'http://'+window.location.hostname+':8080/api',
-            User = $resource(urlBase+'/user/:id', {id:'@id'});
-            
+            User = $resource(API_URL+'/user/:id', {id:'@id'});
+
         // self.createUser = function (data) {
         //     return $User.put(urlBase, data);
         // };
@@ -26,5 +25,5 @@ define(['app'], function(app){
         // self.authenticate = function(id) {
         //     return $http.delete(urlBase + '/authenticate' + id);
         // };
-    }]);
+    });
 });
