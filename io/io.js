@@ -1,14 +1,11 @@
-const socketio = require("socket.io"),
-    socketioJwt = require("socketio-jwt");
+const socketio = require("socket.io");
 
 
 module.exports = function(server) {
     return socketio(server)
-        .use(socketioJwt.authorize({
-            secret: 'superSecret',
-            handshake: true
-        }))
+        .use(require('./io-auth'))
+        .use(require('./io-events'))
         .on('connection', function(socket) {
-            console.log('hello! ', socket);
+            console.log('hello! ');
         });
 };
