@@ -1,10 +1,10 @@
 define(['app', 'route', 'i18n'], function(app, route, i18n) {
     return app
-        .constant('JWT_HEADER', 'x-access-token')
         .constant('API_URL',
             window.location.protocol +'//' +
             window.location.host + '/api')
         .config(function(
+            API_CONFIG,
             $locationProvider,
             $stateProvider,
             $urlRouterProvider,
@@ -27,6 +27,8 @@ define(['app', 'route', 'i18n'], function(app, route, i18n) {
             jwtInterceptorProvider.tokenGetter = function(jwtProvider) {
                 return jwtProvider.getToken();
             };
+
+            jwtInterceptorProvider.authHeader = API_CONFIG.auth.header;
 
             route($stateProvider, $urlRouterProvider, $locationProvider);
 
