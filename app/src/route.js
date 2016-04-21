@@ -98,6 +98,7 @@ define([], function() {
                 },
                 views: {
                     'main-view@app': {
+                        controller: 'pollDetailsCtrl as $ctrl',
                         templateUrl: 'view/poll-detail.html',
                     }
                 }
