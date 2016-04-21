@@ -2,9 +2,9 @@ require([
     'angular',
     'app',
     'config',
+    'factories',
     'services',
     'controllers',
-    'factories',
     'components',
     'directives'
 ], function (angular, app) {
