@@ -5,14 +5,14 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     secretToken = 'superSecret';
 
-module.exports = function(app, options) {
+module.exports = function(app, cfg, opts, cert) {
 
-    options.debug && router.use(morgan('api'));
+    opts.debug && router.use(morgan('api'));
 
     router.use(bodyParser.urlencoded({
         extended: true
     }));
-    
+
     router.use(bodyParser.json());
 
     router.post('/authenticate', function(req, res) {
@@ -26,7 +26,8 @@ module.exports = function(app, options) {
         var token = jwt.sign({
             username: 'test',
             role: 'ADMIN'
-        }, secretToken, {
+        }, cert.key, {
+            algorithm: 'RS256',
             expiresIn: 1440 * 60 // expires in 24 hours
         });
 
@@ -38,7 +39,7 @@ module.exports = function(app, options) {
 
     router.use(function(req, res, next) {
         (function(token) {
-            token ? jwt.verify(token, secretToken, function(err, decoded) {
+            token ? jwt.verify(token, cert.pub, { algorithms: ['RS256'] }, function(err, decoded) {
                 err ? res.status(403).json({
                     message: 'Failed to authenticate token.'
                 }) : next();

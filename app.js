@@ -1,11 +1,16 @@
-var express     = require('express'),
+const
+    app         = require('express')(),
     path        = require('path'),
     morgan      = require('morgan'),
     colors      = require('colors'),
     mongoose    = require('mongoose'),
     fs          = require('fs'),
-    app         = express(),
-    http        = require( 'http' ).createServer( app ),
+    cert        = {
+        key: fs.readFileSync('ssl/server.key', 'utf8'),
+        pub: fs.readFileSync('ssl/server-pub.key', 'utf8'),
+        cert: fs.readFileSync('ssl/server.crt', 'utf8')
+    },
+    http        = require('http').createServer(app),
     opts        = require('nomnom')
         .usage('Start webserver.\nUsage: $0')
         .option('port', {
@@ -99,11 +104,11 @@ app.orm = require('./orm/orm.js')({
 // }));
 
 app
-    .use('/api', require('./api/api.js')(app, opts, cfg.api))
-    .use('/',    require('./server/server.js')(app, opts, cfg.app));
+    .use('/api', require('./api/api.js')(app, cfg.api, opts, cert))
+    .use('/',    require('./server/server.js')(app, cfg.app, opts, cert));
 
 
-app.io = require('./io/io.js')(http);
+app.io = require('./io/io.js')(http, {}, opts, cert);
 
 //console.log(orm.models.role.read);
 
