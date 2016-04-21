@@ -18,6 +18,7 @@ module.exports = function(grunt, factory) {
             'angular-sanitize': '../lib/angular-sanitize/angular-sanitize',
             'angular-socket-io': '../lib/angular-socket-io/socket',
             'angular-ui-router': '../lib/angular-ui-router/release/angular-ui-router',
+            'angular-jwt': '../lib/angular-jwt/dist/angular-jwt',
             'angular-oclazyload': '../lib/oclazyload/dist/ocLazyLoad',
             'angular-local-storage': '../lib/angular-local-storage/dist/angular-local-storage',
             'angular-datatables': '../lib/angular-datatables/dist/angular-datatables',
@@ -27,8 +28,10 @@ module.exports = function(grunt, factory) {
             'bootstrap-markdown': '../lib/bootstrap-markdown/js/bootstrap-markdown',
             'underscore': '../lib/underscore/underscore',
             'jquery': '../lib/jquery/dist/jquery',
+            'jquery': '../lib/jquery/dist/jquery',
             'peity': '../lib/peity/jquery.peity',
             'moment': '../lib/moment/min/moment-with-locales',
+            'swal': '../lib/sweetalert/dist/sweetalert-dev',
             'pace': '../lib/pace/pace',
             'crypto-js': '../lib/crypto-js/index',
             'socket-io': '../lib/socket.io-client/socket.io'
