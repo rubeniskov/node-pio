@@ -35,7 +35,6 @@ define(['angular',
         .run(function($rootScope, $state, jwtProvider) {
             $rootScope.$state = $state;
             $rootScope.$on('$stateChangeStart', function($event, to) {
-
                 if (to.data) {
                     if (to.data.requiresLogin) {
                         if (jwtProvider.isTokenExpired()) {
