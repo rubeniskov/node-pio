@@ -3,7 +3,7 @@ const   express     = require('express'),
         router      = express.Router();
 
 
-module.exports = function(app, opts, cfg){
+module.exports = function(app, cfg, opts){
     return router
         .use(function(req, res, next){
             res.status(404);
