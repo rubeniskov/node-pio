@@ -20,8 +20,13 @@
             </ul>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
+                    <a ng-click="lang.switch()">
+                        <i class="fa fa-language"></i> {{ lang.which('es') ? 'Español' : 'English' }}
+                    </a>
+                </li>
+                <li ng-controller="authCtrl as auth">
                     <a ng-click="auth.signOut()">
-                        <i class="fa fa-sign-out"></i> {{ 'SIGN_OUT' | translate }}
+                        <i class="fa fa-sign-out" ng-click="auth.signOut()"></i> {{ 'SIGN_OUT' | translate }}
                     </a>
                 </li>
             </ul>

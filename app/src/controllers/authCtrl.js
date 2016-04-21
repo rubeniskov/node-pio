@@ -1,5 +1,5 @@
 define(['app'], function(app){
-    app.controller('authCtrl', ['authService', function (authService) {
+    app.controller('authCtrl', function ($state, authService) {
 
         this.signIn = function(id, password){
             return authService.signIn(id, password);
@@ -18,7 +18,9 @@ define(['app'], function(app){
         };
 
         this.signOut = function(){
-            authService.signOut();
+            authService.signOut().then(function(){
+                $state.go('sign-in')
+            });
         };
-    }]);
+    });
 });
