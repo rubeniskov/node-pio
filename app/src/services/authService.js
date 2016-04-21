@@ -1,13 +1,13 @@
 define(['app', 'crypto-js'], function(app, crypto){
-    app.service('authService', ['$q', 'apiService', 'jwtProvider', function ($q, apiService, jwtProvider) {
+    app.service('authService', function (API_CONFIG, $q, apiService, jwtProvider) {
 
         var self = this;
 
         self.signIn = function (id, password) {
-            return apiService.authenticate({
+            return apiService.authenticate(crypto.AES.encrypt(JSON.stringify({
                 id: id,
-                password: crypto.HmacSHA1(password, 'secret')
-            }).then(function(response){
+                password: password
+            }), API_CONFIG.key).toString()).then(function(response){
                 jwtProvider.setToken(response.data.token);
             });
         };
@@ -20,5 +20,5 @@ define(['app', 'crypto-js'], function(app, crypto){
                 jwtProvider.removeToken();
             return $q.resolve();
         };
-    }]);
+    });
 });

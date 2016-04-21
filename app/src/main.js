@@ -1,5 +1,7 @@
 require([
     'angular',
+    'angular-deferred-bootstrap',
+    'swal',
     'app',
     'config',
     'factories',
@@ -7,8 +9,19 @@ require([
     'controllers',
     'components',
     'directives'
-], function (angular, app) {
+], function(angular, deferred, swal, app) {
     angular.element(document).ready(function() {
-        angular.bootstrap(document, [app.name]);
+        deferred.bootstrap({
+            element: document,
+            module: app.name,
+            resolve: {
+                API_CONFIG: ['$http', function($http) {
+                    return $http.get('/api');
+                }]
+            },
+            onError: function(error) {
+                swal('Could not bootstrap, error: ' + error, 'error');
+            }
+        });
     });
 });
