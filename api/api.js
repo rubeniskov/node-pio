@@ -1,11 +1,13 @@
 const express = require('express'),
     router = express.Router(),
     jwt = require('jsonwebtoken'),
+    crypto = require('crypto-js'),
     morgan = require('morgan'),
-    bodyParser = require('body-parser'),
-    secretToken = 'superSecret';
+    bodyParser = require('body-parser');
 
 module.exports = function(app, cfg, opts, cert) {
+
+    var pub = cert.pub.replace(/\-{5}([\sa-zA-Z]+)\-{5}|\n/gi, '');
 
     opts.debug && router.use(morgan('api'));
 
@@ -23,6 +25,8 @@ module.exports = function(app, cfg, opts, cert) {
             });
         }
 
+        var credentials = JSON.parse(crypto.AES.decrypt(req.body.hash, pub).toString(crypto.enc.Utf8));
+        console.log('Credentials', credentials);
         var token = jwt.sign({
             username: 'test',
             role: 'ADMIN'
@@ -34,6 +38,18 @@ module.exports = function(app, cfg, opts, cert) {
         res.json({
             message: 'Enjoy your token!',
             token: token
+        });
+    });
+
+    router.get('/', function(req, res) {
+        res.json({
+            auth: {
+                type: 'jwt',
+                header: 'x-access-token'
+            },
+            key: cert.pub.replace(/\-{5}([\sa-zA-Z]+)\-{5}|\n/gi, ''),
+            version: app.locals.version,
+            name: app.locals.name
         });
     });
 
@@ -51,12 +67,6 @@ module.exports = function(app, cfg, opts, cert) {
 
     require('./views/user.js')(router, app.orm);
     require('./views/poll.js')(router, app.orm);
-
-    router.get('/', function(req, res) {
-        res.json({
-            message: 'hooray! welcome to our api!'
-        });
-    });
 
     router.use(function(req, res, next) {
         res.status(404);

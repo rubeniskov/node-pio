@@ -10,6 +10,7 @@ const
         pub: fs.readFileSync('ssl/server-pub.key', 'utf8'),
         cert: fs.readFileSync('ssl/server.crt', 'utf8')
     },
+    pkg         = JSON.parse(fs.readFileSync('package.json', 'utf8')),
     http        = require('http').createServer(app),
     opts        = require('nomnom')
         .usage('Start webserver.\nUsage: $0')
@@ -90,6 +91,9 @@ morgan.format('api', [
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
+
+app.locals.version = pkg.version;
+app.locals.name = pkg.name;
 
 app.orm = require('./orm/orm.js')({
     hostname: 'localhost',
