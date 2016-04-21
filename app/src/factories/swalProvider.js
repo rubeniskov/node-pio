@@ -46,7 +46,7 @@ define(['app', 'swal'], function(app, swal) {
                     swal.close();
                 });
             }
-        }
+        };
     });
 });
 

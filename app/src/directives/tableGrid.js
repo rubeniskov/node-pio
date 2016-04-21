@@ -2,23 +2,23 @@ define(['app', 'jquery'], function(app, $) {
     app.directive('tableGrid', function($q, $compile, jwtProvider) {
         var defaults = {
             columns: [{
-                "data": "id",
-                "title": "ID",
-                "visible": true
+                'data': 'id',
+                'title': 'ID',
+                'visible': true
             }],
             options: {
-                "deferRender": true,
-                "ajax": {
-                    url: "/api/user/query",
+                'deferRender': true,
+                'ajax': {
+                    url: '/api/user/query',
                     type: 'POST',
                     'headers': {
                         'x-access-token': jwtProvider.getToken()
                     }
                 },
-                "sAjaxDataProp": "data",
-                "sPaginationType": "full_numbers",
-                "serverSide": true,
-                "processing": true
+                'sAjaxDataProp': 'data',
+                'sPaginationType': 'full_numbers',
+                'serverSide': true,
+                'processing': true
             }
         };
 

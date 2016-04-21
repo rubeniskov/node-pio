@@ -14,6 +14,6 @@ define(['app'], function(app) {
                         });
                 };
             }
-        }
+        };
     });
 });

@@ -17,7 +17,7 @@ define(['app', 'underscore'], function(app, _) {
                         $scope._placeholders = fields;
                     } else if (_.isNumber(fields)) {
                         $scope._fields = new Array(fields);
-                    };
+                    }
                 };
 
                 $scope.reset = function($event, $index) {
