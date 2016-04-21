@@ -13,6 +13,7 @@ module.exports = function(grunt, factory) {
             'angular-aria': '../lib/angular-aria/angular-aria',
             'angular-url-parser': '../lib/angular-url-parser/dist/angular-url-parser',
             'angular-bootstrap': '../lib/angular-bootstrap/ui-bootstrap',
+            'angular-deferred-bootstrap': '../lib/angular-deferred-bootstrap/angular-deferred-bootstrap',
             'angular-messages': '../lib/angular-messages/angular-messages',
             'angular-resource': '../lib/angular-resource/angular-resource',
             'angular-sanitize': '../lib/angular-sanitize/angular-sanitize',
