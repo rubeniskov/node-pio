@@ -28,7 +28,10 @@ define([], function() {
             AVATAR: 'Avatar',
             POLLINGS: 'Pollings',
             NOTES: 'Notes',
-            EMAIL: 'Email'
+            EMAIL: 'Email',
+            DATE: 'Date',
+            SAVE: 'Save',
+            CANCEL: 'Cancel'
         });
 
         $translateProvider.translations('es', {
@@ -58,7 +61,10 @@ define([], function() {
             AVATAR: 'Avatar',
             POLLINGS: 'Votaciones',
             NOTES: 'Notas',
-            EMAIL: 'Correo'
+            EMAIL: 'Correo',
+            DATE: 'Fecha',
+            SAVE: 'Guardar',
+            CANCEL: 'Cancelar'
         });
 
         $translateProvider.useSanitizeValueStrategy('escapeParameters');
