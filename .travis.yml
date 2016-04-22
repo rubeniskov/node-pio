@@ -4,6 +4,7 @@ node_js:
 services:
   - docker
 before_install:
+  - docker run -d -p 27017:27017 --name mongo-server mongo:3.2.5
   - docker run -d -p 4444:4444 --name selenium-hub selenium/hub:2.53.0
   - docker run -d --link selenium-hub:hub selenium/node-chrome:2.53.0
   - docker run -d --link selenium-hub:hub selenium/node-firefox:2.53.0
