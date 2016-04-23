@@ -86,6 +86,7 @@
     "protractor-screenshot-reporter": "0.0.5",
     "protractor-timeline-plugin": "^0.1.4",
     "requirejs": "^2.2.0",
+    "sandfox-sass": "^0.1.0",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "socketio-jwt": "^4.3.4",
