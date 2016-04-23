@@ -6,6 +6,7 @@ module.exports = function(grunt, factory) {
             'angular': '../lib/angular/angular',
             'angular-mocks': '../lib/angular-mocks/angular-mocks',
             'angular-peity': '../lib/angular-peity/angular-peity',
+            'angular-scroll': '../lib/angular-scroll/angular-scroll',
             'angular-breadcrumb': '../lib/angular-breadcrumb/dist/angular-breadcrumb',
             'angular-translate': '../lib/angular-translate/angular-translate',
             'angular-animate': '../lib/angular-animate/angular-animate',
