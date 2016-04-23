@@ -1,0 +1,21 @@
+// Returns the square root of `$x`.
+//
+// @param {Number} $x
+//
+// @return {Number}
+//
+// @example
+//     math-sqrt(2) 					// 1.41421
+//     math-sqrt(5) 					// 2.23607
+
+@function math-sqrt ($x) {
+    @if $x < 0 {
+        @warn "Argument for `math-sqrt()` must be a positive number.";
+        @return null;
+    }
+    $ret: 1;
+    @for $i from 1 through $MI {
+        $ret: $ret - (math-pow($ret, 2) - $x) / (2 * $ret);
+    }
+    @return $ret;
+}

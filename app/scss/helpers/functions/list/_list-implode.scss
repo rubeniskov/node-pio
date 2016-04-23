@@ -1,0 +1,26 @@
+// Implode `$list` into a string using `$glue` as a delimiter.
+//
+// @param {String} $string              - list to implode
+// @param {String} $glue     			- string to use as glue
+//
+// @return {List | Null}
+//
+// @example
+//     list-implode("a" "b" "c")        // "abc"
+//     list-implode("a" "b" "c", "--")  // "a--b--c"
+
+@function list-implode( $list, $glue: null ) {
+    $result: null;
+
+    $glue: if( $glue, $glue, if( list_separator( $list ) == comma, ",", " " ) );
+
+    $list: list-flatten( $list );
+
+    @for $i from 1 through length( $list ) {
+        $value: nth( $list, $i );
+
+        $result: if($i == 1, #{$result}#{$value}, #{$result}#{$glue}#{$value});
+    }
+
+    @return quote( $result );
+}

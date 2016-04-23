@@ -1,0 +1,60 @@
+// Adds `$value` at `$index` in `$list`.
+//
+// @param {List}    $list               - list to update
+// @param {*}       $value              - value to add
+// @param {Number}  $index              - index to add
+// @param {String}  $separator          - list separator
+//
+// @return {List | Null}
+//
+// @example
+//     list-insert("a" "b" "c", "d")        // ("a" "b" "c" "d")
+//     list-insert("a" "c", "d", "b", 2)    // ("a" "b" "c" "d")
+
+@function list-insert($list, $value, $index: null, $separator:null) {
+
+    $length: length($list);
+
+    $index: $index or $length + 1;
+
+    $separator: $separator or list-separator($list);
+
+    @if type-of($index) !="number" {
+        @warn "List index #{inspect($index)} is not a number for `list-insert`.";
+        @return null;
+    }
+
+    @if $index == 0 {
+        @warn "List index #{$index} must be a non-zero integer for `list-insert`.";
+        @return null;
+    }
+
+    @if $index < 0 {
+        $index: max( 1, $length + $index + 1 );
+    }
+
+    @if $index > $length {
+        @return append($list, $value, $separator);
+    }
+
+    @if $index == 1 {
+        @return join($value, $list);
+    }
+
+    $result: ();
+
+    @for $i from 1 through $length {
+
+        @if $i==$index {
+
+            @if not is-empty($value) {
+
+                $result: append($result, $value, $separator);
+            }
+        }
+
+        $result: append($result, nth($list, $i), $separator);
+    }
+
+    @return $result;
+}

@@ -1,0 +1,21 @@
+// Returns the error function of `$x`.
+//
+// @param {Number} $x                   - A number between -3.5 to 3.5.
+//
+// @return {Number}                     - Return a value between -1 and 1
+//
+// @example
+//     math-erf(-1)                     // -0.995322265
+//     math-erf(2)                      // 0.995322265
+
+@function math-erf($x) {
+    $m: 1;
+    $s: 1;
+    $sum: $x * 1;
+    @for $i from 1 through $MI {
+        $m: $m * $i;
+        $s: $s * -1;
+        $sum: $sum + ($s * math-pow($x, 2.0 * $i + 1.0)) / ($m * (2.0 * $i + 1.0));
+    }
+    @return max(-1, min(1, (2 * $sum / math-sqrt($PI))));
+}

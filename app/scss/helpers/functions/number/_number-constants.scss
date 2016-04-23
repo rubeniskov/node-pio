@@ -1,0 +1,29 @@
+// Constants
+$NUMBER_MAX:    			9007199254740992 !global;
+$NUMBER_MIN:    			-9007199254740992 !global;
+$NUMBER_ZERO:    			0 !global;
+$NUMBER_ZERO_NEGATIVE: 		-0 !global;
+$NUMBER_STRINGS:    		('0' '1' '2' '3' '4' '5' '6' '7' '8' '9') !global;
+$NUMBER_VALUES:    			(0   1   2   3   4   5   6   7   8   9) !global;
+$NUMBER_UNIT_STRINGS:   	('px' 'cm' 'mm' '%' 'ch' 'pica' 'in' 'em' 'rem' 'pt' 'pc' 'ex' 'vw' 'vh' 'vmin' 'vmax') !global;
+$NUMBER_UNIT_VALUES:    	(1px  1cm  1mm  1%  1ch  1pica  1in  1em  1rem  1pt  1pc  1ex  1vw  1vh  1vmin  1vmax) !global;
+$NUMBER_UNIT_ANGLE_STRINGS: ('deg' 'rad' 'grad' 'turn') !global;
+$NUMBER_UNIT_ANGLE_VALUES:  (1deg 1rad 1grad 1turn) !global;
+$NUMBER_UNIT_ANGLE_FACTORS: (
+	1, 						// deg -> deg
+	0.017453292519943296,	// deg -> rad
+	1.111111111111111168, 	// deg -> grad
+	0.002777777777777778, 	// deg -> turn
+	57.29577951308232294, 	// rad -> deg
+	1, 						// rad -> rad
+	63.66197723675813478, 	// rad -> grad
+	0.159154943091895360, 	// rad -> turn
+	0.899999999999999872, 	// grad -> deg
+	0.015707963267948966, 	// grad -> rad
+	1, 						// grad -> grad
+	0.0025, 				// grad -> turn,
+	360, 					// turn -> deg
+	6.283185307179586560, 	// turn -> rad
+	400, 					// turn -> grad
+	1 						// turn -> turn	
+) !global;

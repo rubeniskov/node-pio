@@ -1,0 +1,135 @@
+// http://www.w3.org/TR/css3-mediaqueries/#media1
+
+@function media( $queries... ) 
+{
+    @return media-query( $queries );
+}
+
+@function media-query( $queries )
+{
+    $query-branches: ();
+
+    @each $query in $queries 
+    {
+        @if type-of( $query ) == "string"
+        {
+            $query-branch: ( unquote( $query ) );
+
+            $query-branches: append($query-branches, $query-branch, space );
+        }
+        @else if type-of( $query ) == "list"
+        {
+            $query-branches: append( $query-branches, $query, comma );
+        }
+       
+    }
+
+    //$query-branches: append( $query-branches, $query-branch, comma );
+
+    @return $query-branches;
+}
+
+ /*@else if ( type-of( $query ) == "list" )
+        {
+            $result: append( $result, media-query( $query... ) );
+        }*/
+
+@function media-parse-query( $query ) 
+{
+    $value: null;
+
+    $operator: null;
+
+    $query-branch: ( null, null );
+
+    @if type-of( $query ) == "string"
+    {
+        @if ( str-slice( $query, 2, 2 ) == '=' )
+        {
+            $operator: str-slice( $query, 1, 2 );
+
+            $value: unquote( str-slice( $query, 3 ) );
+        } 
+        @else
+        {
+            $operator: str-slice( $query, 1, 1 );
+
+            $value: unquote( str-slice( $query, 2 ) );
+        }
+
+        @if ($operator == '>') 
+        {
+            $query-branch: ( $value null );
+        } 
+        @else if ($operator == '<') 
+        {
+            $query-branch: ( null $value );
+        }
+        @else 
+        {
+            @warn '#{$query} is missing an operator.';
+        }
+    }
+    @else if type-of( $query ) == "list"
+    {
+        $result: join( $result, media-get-query-expressions( $expression... ) )
+    }
+
+    @return $query-branch;
+}
+
+//@funtion media-expression : ( <media_feature> [: <value>]? )
+@function media-condition( $conditions )
+{
+	$result: ();
+
+	@if ( type-of( $conditions ) == "string" ) 
+    {
+        @if ( length($result) != 0 ) 
+        {
+            $result: append( $result, unquote( "and" ) );
+        }
+
+        $result: append($result, unquote( $conditions ) );
+    }
+    @else if ( type-of( $conditions ) == "list" )
+    {
+        /*@if ( length($result) != 0 ) 
+        {
+            $result: append( $result, unquote( "or" ) );
+        }
+
+        $result: join( $result, media-get-query-expressions( $expression... ) )*/
+    }
+
+    @return $result;
+}
+/**
+media_query_list: <media_query> [, <media_query> ]*
+media_query: [[only | not]? <media_type> [ and <expression> ]*]
+  | <expression> [ and <expression> ]*
+expression: ( <media_feature> [: <value>]? )
+media_type: all | aural | braille | handheld | print |
+  projection | screen | tty | tv | embossed
+media_feature: width | min-width | max-width
+  | height | min-height | max-height
+  | device-width | min-device-width | max-device-width
+  | device-height | min-device-height | max-device-height
+  | aspect-ratio | min-aspect-ratio | max-aspect-ratio
+  | device-aspect-ratio | min-device-aspect-ratio | max-device-aspect-ratio
+  | color | min-color | max-color
+  | color-index | min-color-index | max-color-index
+  | monochrome | min-monochrome | max-monochrome
+  | resolution | min-resolution | max-resolution
+  | scan | grid
+**/
+
+/*
+OPERATORS
+
+
+>
+<
+
+
+*/

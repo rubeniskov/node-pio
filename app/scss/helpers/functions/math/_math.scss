@@ -1,0 +1,46 @@
+// Constants
+@import "math-constants";
+
+// Transform
+@import "math-abs";
+
+// Exponentiation
+@import "math-pow";
+
+// Factorial
+@import "math-fact";
+
+// Square root
+@import "math-sqrt";
+
+// Exponential
+@import "math-exp",
+	 	"math-frexp",
+	 	"math-ldexp";
+
+// Logarithms
+@import "math-log";
+
+// Euclidean algorithm
+@import "math-gcd";
+
+// Polynomial approximation
+@import "math-maclaurin";
+
+// Error Gauss Functions
+@import "math-erf",
+		"math-erfc";
+
+// Trigonometric
+@import "math-sin",
+		"math-cos",
+		"math-tan",
+		"math-csc",
+		"math-sec",
+		"math-cot";
+
+// Inverse trigonometric
+@import "math-asin",
+		"math-acos",
+		"math-atan",
+		"math-atan2";

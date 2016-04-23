@@ -1,0 +1,13 @@
+// Returns the absolute value of `$x`.
+//
+// @param {Number} $x					- A number to be absoluted.
+//
+// @return {Number}
+//
+// @example
+//     math-abs(-20) 					// 20
+//     math-abs(-10px)  				// 10px
+
+@function math-abs($x) {
+    @return abs($x);
+}

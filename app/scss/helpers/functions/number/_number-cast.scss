@@ -1,0 +1,54 @@
+// Transform `$string` to number.
+//
+// @param {Number}  $string           - number to be converted
+//
+// @return {Number}
+//
+// @example
+//     number-cast("1px")             // 1px
+//     number-cast("-1em")            // -1em
+
+@function number-cast($string) {
+  // Result
+  $result: 0;
+  $divider: 0;
+  $minus: false;
+
+  // Looping through all characters
+  @for $i from 1 through str-length($string) {
+    $character: str-slice($string, $i, $i);
+    $index: index($NUMBER_STRINGS, $character);
+    
+  
+    @if $character == '-' {
+      $minus: true;
+    }
+    
+    @else if $character == '.' {
+      $divider: 1;
+    }
+    
+    @else {
+      @if not $index {
+        $result: if($minus, $result * -1, $result);
+        @return number-unit-set($result, str-slice($string, $i));
+      }
+
+      $number: nth($NUMBER_VALUES, $index);
+      
+      @if $divider == 0 {
+        $result: $result * 10;
+      }
+      
+      @else {
+        // Move the decimal dot to the left
+        $divider: $divider * 10;
+        $number: $number / $divider;
+      }
+      
+      $result: $result + $number;
+    }
+  }
+  
+  @return if($minus, $result * -1, $result);
+}

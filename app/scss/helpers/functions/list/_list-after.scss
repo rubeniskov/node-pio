@@ -1,0 +1,16 @@
+// Adds `$value` after the given index of `search`.
+//
+// @param {List} 	$list  				- list to add value
+// @param {*}    	$value 				- value to add to the list
+// @param {*}    	$search (null)		- value to search and get index
+// @param {String}  $separator (null)	- list separator
+//
+// @return {List}
+//
+// @example
+//     list-after("a" "c" "d", "b", "a")   	// ("a" "b" "c" "d")
+//     list-after(1 3 4, 2, 1)   			// (1 2 3 4)
+
+@function list-after($list, $value, $search:null, $separator:null) {
+    @return list-insert($list,$value, if( $search != null, list-index($list, $search) + 1, null), $separator);
+}

@@ -1,0 +1,14 @@
+// Returns the cotangent of `$x`.
+//
+// @param {Number} $x 					- A number in rad or deg. Assuming unitless number to be in rad.
+//
+// @return {Number}
+//
+// @example
+//     math-cot(0.5236) 				// 1.73205
+//     math-cot(30deg)  				// 1.73205
+
+@function math-cot($x) {
+    $x: number-unit-angle($x, "rad", true);
+    @return 1 / math-tan($x);
+}

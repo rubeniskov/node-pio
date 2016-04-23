@@ -1,0 +1,14 @@
+// Checks if `$number` is odd.
+//
+// @param {Number} 	$number  			- number to be checked
+//
+// @return {Bool}
+//
+// @example
+//     number-is-odd(10px)   			// false
+//     number-is-odd(15em)   			// true
+
+@function number-is-odd($number) {
+	$number: number-unit-less($number);
+	@return $number % 2 != 0;
+}

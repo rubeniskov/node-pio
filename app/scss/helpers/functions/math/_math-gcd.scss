@@ -1,0 +1,19 @@
+// Returns the greatest comoon divisor of `$x` and `$y`.
+//
+// @param {Number} $x                   - A number between -3.5 to 3.5.
+//
+// @return {Number}                     - Return a value between -1 and 1
+//
+// @example
+//     math-erf(-1)                     // -0.995322265
+//     math-erf(2)                      // 0.995322265
+
+@function math-gcd($x, $y) {
+    $t: 0;
+    @while $y !=0 {
+        $t: $x % $y;
+        $x: $y;
+        $y: $t;
+    }
+    @return $x;
+}

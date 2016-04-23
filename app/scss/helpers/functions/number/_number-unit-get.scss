@@ -1,0 +1,17 @@
+// Gets the unit of `$number`.
+//
+// @param {Number}  $number
+//
+// @return {String}
+//
+// @example
+//     number-unit-get(60deg)      		// "deg"
+//     number-unit-get(10px) 			// "px"
+
+@function number-unit-get($number) {
+	@if not number-is-unit($number) {
+       	@return false;
+    }
+
+    @return unit( $number );
+}

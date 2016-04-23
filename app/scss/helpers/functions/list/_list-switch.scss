@@ -1,0 +1,14 @@
+// Switch separator of `$list`
+//
+// @param {List}    $list       		- list to update
+// @param {String}  $separator  		- list separator
+//
+// @return {List}
+//
+// @example
+//     list-switch("a" "b" "c" "d")    		// ("a", "b", "c", "d")
+//     list-switch(("a", "b", "c", "d"))    // ("a" "b" "c" "d")
+
+@function list-switch($list, $separator:null) {
+    @return list-create(if($separator != null, $separator, if(list-separator($list) == comma, space, comma)), $list);
+}

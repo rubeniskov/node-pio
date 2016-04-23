@@ -1,0 +1,14 @@
+// Returns the secant of `$x`.
+//
+// @param {Number} $x 					- A number in rad or deg. Assuming unitless number to be in rad.
+//
+// @return {Number}
+//
+// @example
+//     math-sec(0.7854) 				// 1.41422
+//     math-sec(45deg)  				// 1.41422
+
+@function math-sec($x) {
+    $x: number-unit-angle($x, "rad", true);
+    @return 1 / math-cos($x);
+}

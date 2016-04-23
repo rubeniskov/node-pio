@@ -1,0 +1,48 @@
+// Explodes `$string` into a list using `$delimiter` as a delimiter.
+//
+// @param {String} $string              - string to explode
+// @param {String} $delimiter ('')      - string to use as a delimiter
+// @param {String} $separator ('space') - list separator
+//
+// @return {List | Null}
+//
+// @example
+//     list-explode("abc")              // ("a" "b" "c")
+//     list-explode("a--b--c", "--")    // ("a" "b" "c")
+
+@function list-explode( $string, $delimiter: "", $separator: "space") {
+    @if type-of($string) !="string" {
+        @warn "`list-explode` function expecting a string; #{type-of($string)} given.";
+        @return null;
+    }
+    @if type-of($delimiter) !="string" {
+        @warn "`list-explode` function expecting a string; #{type-of($delimiter)} given.";
+        @return null;
+    }
+    $result: ();
+    $length: str-length( $string);
+    $dlength:str-length( $delimiter);
+    @if not index("space" "comma", $separator) {
+        $separator: "space";
+    }
+    @if $dlength==0 {
+        @for $i from 1 through $length {
+            $result: append($result, str-slice( $string, $i, $i));
+        }
+        @return $result;
+    }
+    $running: true;
+    $remaining: $string;
+    @while $running {
+        $index: str-index($remaining, $delimiter);
+        @if not $index {
+            $running: false;
+        }
+        @else {
+            $slice: str-slice($remaining, 1, $index - 1);
+            $result: append($result, $slice, $separator);
+            $remaining: str-slice($remaining, $index + $dlength, $length - length($remaining) + 1);
+        }
+    }
+    @return append($result, $remaining, $separator);
+}

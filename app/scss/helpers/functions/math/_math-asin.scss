@@ -1,0 +1,17 @@
+// Returns the arcsine of `$x`.
+//
+// @param {Number} $x 					- A number between -1 and 1.
+//
+// @return {Number}
+//
+// @example
+//     math-asin(0.1) 					// 0.10017
+//     math-asin(-1)  					// -1.5708
+
+@function math-asin($x) {
+    @if $x > 1 or $x < -1 {
+        @warn "Argument for `math-asin()` must be a number between -1 and 1";
+        @return null;
+    }
+    @return math-atan($x / math-sqrt(1 - $x * $x));
+}

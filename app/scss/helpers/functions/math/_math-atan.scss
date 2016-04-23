@@ -1,0 +1,33 @@
+// Returns the arctangent of `$x`.
+//
+// @param {Number} $x
+//
+// @return {Number}
+//
+// @example
+//     math-atan(0.1)                   // 0.09967
+//     math-atan(-1)                    // -0.7854
+
+@function math-atan($x) {
+    $i:  $MI;
+    $sgn: 0;
+    $a:   0;
+    @if $x > 1 {
+        $sgn:  1;
+        $x:    1 / $x;
+    } @else if $x < -1 {
+        $sgn: -1;
+        $x:    1 / $x;
+    }
+    @while $i > 0 {
+        $a: ($i * $i * $x * $x) / (2 * $i + 1 + $a);
+        $i: $i - 1;
+    }
+    @if $sgn > 0 {
+        @return  $PI / 2 - $x / (1 + $a);
+    } @else if $sgn < 0 {
+        @return -$PI / 2 - $x / (1 + $a);
+    } @else {
+        @return            $x / (1 + $a);
+    }
+}

@@ -1,0 +1,31 @@
+// Convert multidimensional `$list` into a one-level list.
+//
+// @param {List} $list                  - list to flatten
+// @param {String} $separator           - separator list
+// 
+// @return {List}
+//
+// @example
+//     list-flatten("a" "b" "c", 1 (2, 3))  // ("a" "b" "c" 1 2 3)
+
+@function list-flatten( $list, $separator: null ) {
+    $result: ();
+
+    @if not index("space" "comma", $separator) {
+        $separator: list_separator( $list );
+    }
+
+    @for $i from 1 through length( $list ) {
+        $value: nth( $list, $i );
+
+        @if type-of( $list ) == "list" {
+            $result: join( $result, list-flatten( $value, $separator ), $separator );
+        }
+        @else if $value != null
+        {
+            $result: append( $result, $value, $separator );
+        }
+    }
+
+    @return $result;
+}

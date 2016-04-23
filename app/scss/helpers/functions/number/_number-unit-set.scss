@@ -1,0 +1,25 @@
+// Adds a unit of `$number`.
+//
+// @param {Number}  $number
+//
+// @return {String}
+//
+// @example
+//     number-unit-set(60, deg)      	// 60deg
+//     number-unit-set(10, px) 			// 10px
+
+@function number-unit-set($number, $unit) {
+
+	@if number-is-unit($number) {
+		$number: number-unit-less($number);
+	}
+
+	$index: index($NUMBER_UNIT_STRINGS, $unit);
+  
+  	@if not $index {
+    	@warn "Unknown unit `#{$unit}`.";
+    	@return false;
+  	}
+  
+  	@return $number * nth($NUMBER_UNIT_VALUES, $index);
+}

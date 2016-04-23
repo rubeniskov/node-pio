@@ -1,0 +1,14 @@
+// Checks if `$number` is even.
+//
+// @param {Number} 	$number  			- number to be checked
+//
+// @return {Bool}
+//
+// @example
+//     number-is-even(10px)   			// true
+//     number-is-even(15em)   			// false
+
+@function number-is-even($number) {
+	$number: number-unit-less($number);
+	@return $number % 2 == 0;
+}
