@@ -69,6 +69,8 @@ collection
 
 */
 
+const q = require('q');
+
 module.exports = function(utils) {
     const _ = require('underscore'),
         maps = {
@@ -110,7 +112,7 @@ module.exports = function(utils) {
                 var umask = parseMask(mask || '0F73');
                 return function authorized(user, groups) {
                     var mr = [
-                        true, !!groups.filter(function(group) {
+                        user !== owg.owner, !!groups.filter(function(group) {
                             return !~owg.groups.indexOf(group);
                         }).length,
                         user === owg.owner
@@ -170,6 +172,15 @@ module.exports = function(utils) {
 
     return {
         expose: {
+            authenticate: function(user, password){
+                var deferred = q.defer();
+                console.log('authenticate', user, password);
+                deferred.resolve();
+                return deferred.promise;
+            },
+            revoke: function(){
+
+            },
             auth: function(user, groups) {
                 _user = user;
                 _groups = groups;
@@ -198,8 +209,9 @@ module.exports = function(utils) {
                         if (auth.check('read')) {
                             fields = checkFields(query.schema.paths, auth, 'read');
                             forbidden = _.intersection(_.uniq((query._fields || []).concat(_.keys(query._conditions))), fields[0])[0];
+                            console.log(_user, _groups, forbidden);
                             if (forbidden)
-                                return next(new AuthError('you do not have create access to the following fields: [' + forbidden + ']'));
+                                return next(new AuthError('you do not have read access to the following fields: [' + forbidden + ']'));
                             query._fields = fields[1].filter(filterFields);
                             return next();
                         }
@@ -260,7 +272,11 @@ module.exports = function(utils) {
 
             schema.statics.delete = function(){
                 return this.remove.apply(this, arguments);
-            }
+            };
+
+            schema.statics.read = function(){
+                return this.find.apply(this, arguments);
+            };
 
             schema.add({
                 o: {
