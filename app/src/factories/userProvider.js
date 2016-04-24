@@ -1,6 +1,6 @@
 define(['app'], function(app) {
-    app.factory('User', ['$resource', function($resource) {
-        return $resource('http://' + window.location.hostname + ':8080/api/user/:id', {
+    app.factory('userProvider', function($resource, API_URL) {
+        return $resource(API_URL + '/user/:id', {
             id: '@id'
         }, {
             create:   {
@@ -18,5 +18,5 @@ define(['app'], function(app) {
         }, {
             stripTrailingSlashes: false
         });
-    }]);
+    });
 });
