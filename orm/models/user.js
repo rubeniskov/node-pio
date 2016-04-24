@@ -13,7 +13,7 @@ module.exports = function(schema){
         password: {
             type: String,
             required: [true, 'user.password is required'],
-            permissions: 'o+c',
+            permissions: 'o+cru',
             // default: function(){
             //     console.log(this);
             // }
