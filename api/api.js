@@ -17,30 +17,6 @@ module.exports = function(app, cfg, opts, cert) {
 
     router.use(bodyParser.json());
 
-    router.post('/authenticate', function(req, res) {
-
-        if(false) {
-            res.status(401).json({
-                message: 'Auth failed!'
-            });
-        }
-
-        var credentials = JSON.parse(crypto.AES.decrypt(req.body.hash, pub).toString(crypto.enc.Utf8));
-        console.log('Credentials', credentials);
-        var token = jwt.sign({
-            username: 'test',
-            role: 'ADMIN'
-        }, cert.key, {
-            algorithm: 'RS256',
-            expiresIn: 1440 * 60 // expires in 24 hours
-        });
-
-        res.json({
-            message: 'Enjoy your token!',
-            token: token
-        });
-    });
-
     router.get('/', function(req, res) {
         res.json({
             auth: {
@@ -53,9 +29,46 @@ module.exports = function(app, cfg, opts, cert) {
         });
     });
 
+    router.post('/authenticate', function(req, res) {
+
+        var credentials = JSON.parse(crypto.AES.decrypt(req.body.hash, pub).toString(crypto.enc.Utf8));
+        credentials = {
+            _id: '00000000A',
+            password: '1234'
+        };
+
+        app.orm.models.user.findOne(credentials)
+            .then(function(user) {
+                if (user) {
+                    var token = jwt.sign({
+                        username: user.username,
+                        groups: user.groups
+                    }, cert.key, {
+                        algorithm: 'RS256',
+                        expiresIn: 1440 * 60 // expires in 24 hours
+                    });
+
+                    res.json({
+                        message: 'Authentification Success!',
+                        token: token
+                    });
+                } else {
+                    res.status(403).json({
+                        message: 'Authentification failed!'
+                    });
+                }
+            }, function(err) {
+                res.status(403).json({
+                    message: err.message
+                });
+            });
+    });
+
     router.use(function(req, res, next) {
         (function(token) {
-            token ? jwt.verify(token, cert.pub, { algorithms: ['RS256'] }, function(err, decoded) {
+            token ? jwt.verify(token, cert.pub, {
+                algorithms: ['RS256']
+            }, function(err, decoded) {
                 err ? res.status(403).json({
                     message: 'Failed to authenticate token.'
                 }) : next();
@@ -67,6 +80,7 @@ module.exports = function(app, cfg, opts, cert) {
 
     require('./views/user.js')(router, app.orm);
     require('./views/poll.js')(router, app.orm);
+    require('./views/host.js')(router, app.orm);
 
     router.use(function(req, res, next) {
         res.status(404);

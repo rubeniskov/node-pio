@@ -1,5 +1,5 @@
 define(['app'], function(app) {
-    app.controller('mainCtrl', ['$rootScope', function($rootScope) {
+    app.controller('mainCtrl', function($rootScope, ioService) {
         $rootScope.PieChart = {
             data: [1, 2, 3, 4],
             options: {
@@ -10,5 +10,9 @@ define(['app'], function(app) {
                 width: null
             }
         };
-    }]);
+
+        ioService.on('user', function(){
+            console.log('User Connected');
+        });
+    });
 });

@@ -13,7 +13,8 @@ define(['angular',
     'angular-url-parser',
     'angular-breadcrumb',
     'angular-datatables',
-    'angular-socket-io'
+    'angular-socket-io',
+    'angular-scroll'
 ], function(angular) {
     return angular.module('pio', [
             'ngSanitize',
@@ -30,7 +31,8 @@ define(['angular',
             'urlParser',
             'ncy-angular-breadcrumb',
             'datatables',
-            'btford.socket-io'
+            'btford.socket-io',
+            'duScroll'
         ])
         .run(function($rootScope, $state, jwtProvider) {
             $rootScope.$state = $state;
