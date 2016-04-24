@@ -1,5 +1,5 @@
 define(['app', 'underscore'], function(app, _) {
-    app.directive('inputCodePassword', ['$parse', function($parse) {
+    app.directive('inputCodePassword', function($parse) {
         return {
             replace: true,
             restrict: 'E',
@@ -54,5 +54,5 @@ define(['app', 'underscore'], function(app, _) {
                 });
             }
         };
-    }]);
+    });
 });
