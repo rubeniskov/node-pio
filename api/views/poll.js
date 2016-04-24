@@ -60,16 +60,19 @@ module.exports = function(router, orm, auth) {
         });
     });
 
-    // router.put('/poll', function(req, res) {
-    //     orm.models.user.create(req.body)
-    //         .then(function(){
-    //             res.status(200).json({
-    //                 message: 'User created successfully'
-    //             });
-    //         }, function(err){
-    //             res.status(400).json(err);
-    //         });
-    // });
+    router.put('/poll', function(req, res) {
+        orm.models.user.create({
+            title: req.body.title,
+            notes: req.body.notes,
+            polling: req.body.polling
+        }).then(function(){
+            res.status(200).json({
+                message: 'User created successfully'
+            });
+        }, function(err){
+            res.status(400).json(err);
+        });
+    });
 
     // router.get('/poll/:id', function(req, res) {
     //     orm.models.user.findOne(_.extend({
