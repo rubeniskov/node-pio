@@ -1,6 +1,9 @@
 require([
     'factories/jwtProvider',
     'factories/ioProvider',
+    'factories/authProvider',
     'factories/swalProvider',
-    'factories/user'
+    'factories/userProvider',
+    'factories/pollProvider',
+    'factories/hostProvider'
 ]);
