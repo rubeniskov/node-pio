@@ -1,4 +1,4 @@
-define(['app'], function(app){
+define(['app', 'moment'], function(app, moment){
     app.controller('langCtrl', function ($translate) {
 
         this.change = function(key){
@@ -11,7 +11,9 @@ define(['app'], function(app){
         };
 
         this.switch = function(){
-            this.change(this.which('es') ? 'en' : 'es');
+            var lang = this.which('es') ? 'en' : 'es';
+            moment.locale(lang)
+            this.change(lang);
             return this;
         };
     });

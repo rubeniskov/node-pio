@@ -8,6 +8,7 @@ define(['app', 'jquery'], function(app, $) {
             }],
             options: {
                 'deferRender': true,
+                'responsive': true,
                 'ajax': {
                     url: '/api/poll/query',
                     type: 'POST',

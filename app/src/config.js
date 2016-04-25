@@ -38,6 +38,8 @@ define(['app', 'route', 'i18n'], function(app, route, i18n) {
                 spinnerColor: '#ffffff'
             });
 
+            $.fn.dataTable.ext.errMode = 'none';
+
             route($stateProvider, $urlRouterProvider, $locationProvider);
 
             i18n($translateProvider);

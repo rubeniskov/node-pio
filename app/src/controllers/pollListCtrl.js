@@ -1,4 +1,4 @@
-define(['app'], function(app) {
+define(['app', 'moment'], function(app, moment) {
     app.controller('pollListCtrl', function($scope, $filter) {
 
         var self = this;
@@ -16,6 +16,9 @@ define(['app'], function(app) {
         };
 
         self.tableGridOptions = {
+            ajax: {
+                url: '/api/poll/query'
+            },
             sAjaxDataProp: 'data',
             sPaginationType: 'full_numbers',
             serverSide: true,
@@ -23,18 +26,19 @@ define(['app'], function(app) {
         };
 
         self.tableGridColumns = [{
-            data: 'id',
-            title: $filter('translate')('ID'),
-            sortable: true,
+            data: '__at',
+            sortable: false,
             visible: false
         }, {
             data: 'title',
             title: $filter('translate')('TITLE'),
             sortable: true,
             render: function(data, type, full, meta) {
+                // Today 2:40 pm - 24.06.2014
+                /// moment().format('MMMM Do YYYY, h:mm:ss a')
                 return '' +
                     '<a ui-sref="app.admin.poll.details({id: 0})" class="faq-question">{{row.title}}</a>' +
-                    '<small>Added by <strong>Alex Smith</strong> <i class="fa fa-clock-o"></i> Today 2:40 pm - 24.06.2014</small>';
+                    '<small>Added by <strong>Alex Smith</strong> <i class="fa fa-clock-o"></i> ' + moment(full.__at.c).format('MMMM Do YYYY, h:mm:ss a') + '</small>';
             }
         }, {
             data: 'tags',

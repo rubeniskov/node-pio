@@ -8,65 +8,12 @@ module.exports = function(router, orm, auth) {
     //     .expose(router, auth);
 
     router.post('/user/query', function(req, res) {
-        // orm.models.user.find(req.body)
-        //     .then(function(docs) {
-        //         res.status(200).json(docs);
-        //     });
-
-        return res.status(200).json({
-            "draw": 1,
-            "recordsTotal": 57,
-            "recordsFiltered": 57,
-            "data": [{
-                "id": 860,
-                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-                "lastName": "Yoda"
-            }, {
-                "id": 870,
-                "title": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium",
-                "lastName": "Whateveryournameis"
-            }, {
-                "id": 870,
-                "title": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis",
-                "lastName": "Whateveryournameis"
-            }, {
-                "id": 860,
-                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-                "lastName": "Yoda"
-            }, {
-                "id": 870,
-                "title": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium",
-                "lastName": "Whateveryournameis"
-            }, {
-                "id": 870,
-                "title": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis",
-                "lastName": "Whateveryournameis"
-            }, {
-                "id": 860,
-                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-                "lastName": "Yoda"
-            }, {
-                "id": 870,
-                "title": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium",
-                "lastName": "Whateveryournameis"
-            }, {
-                "id": 870,
-                "title": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis",
-                "lastName": "Whateveryournameis"
-            }, {
-                "id": 860,
-                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-                "lastName": "Yoda"
-            }, {
-                "id": 870,
-                "title": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium",
-                "lastName": "Whateveryournameis"
-            }, {
-                "id": 870,
-                "title": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis",
-                "lastName": "Whateveryournameis"
-            }]
-        });
+        orm.models.user.datatable(req.body)
+            .then(function(results) {
+                res.status(200).json(results);
+            }, function(err) {
+                res.status(403).json(err);
+            });
     });
 
     router.put('/user', function(req, res) {

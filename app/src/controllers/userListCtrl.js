@@ -16,6 +16,9 @@ define(['app'], function(app) {
         };
 
         self.tableGridOptions = {
+            ajax: {
+                url: '/api/user/query'
+            },
             sAjaxDataProp: 'data',
             sPaginationType: 'full_numbers',
             serverSide: true,
@@ -23,11 +26,6 @@ define(['app'], function(app) {
         };
 
         self.tableGridColumns = [{
-            data: 'id',
-            title: $filter('translate')('ID'),
-            sortable: true,
-            visible: false
-        }, {
             data: 'avatar',
             title: $filter('translate')('AVATAR'),
             sortable: true,
@@ -37,12 +35,12 @@ define(['app'], function(app) {
                 '"></span>';
             }
         }, {
-            data: 'name',
+            data: 'name.full',
             title: $filter('translate')('NAME'),
             sortable: true,
-            render: function(data, type, full, meta) {
-                return 'Ignacio Fernandez';
-            }
+            // render: function(data, type, full, meta) {
+            //     return 'Ignacio Fernandez';
+            // }
         }, {
             data: 'email',
             title: $filter('translate')('EMAIL'),
