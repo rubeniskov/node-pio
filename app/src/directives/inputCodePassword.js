@@ -1,5 +1,5 @@
 define(['app', 'underscore'], function(app, _) {
-    app.directive('inputCodePassword', function($parse) {
+    app.directive('inputCodePassword', function($parse, $timeout) {
         return {
             replace: true,
             restrict: 'E',
@@ -34,9 +34,11 @@ define(['app', 'underscore'], function(app, _) {
                     if ($event.keyCode >= 48 && $event.keyCode <= 57) {
                         var nextinput = $element.find('input').eq(($index + 1) % 4);
                         if ($index !== 3) {
-                            nextinput.focus();
+                            $timeout(function(){
+                                nextinput.focus();
+                            });
                         } else {
-                            angular.element(':focus').blur();
+                            angular.element(':focus').closest('form').submit();
                         }
                     }
                 };
@@ -45,11 +47,11 @@ define(['app', 'underscore'], function(app, _) {
                 var self = this,
                     model = $ctrls[0];
 
-                $scope.$watch('_fields', function(ov, nv) {
+                $scope.$watch('_fields', function(nv, ov) {
                     nv && model.$setViewValue(nv.join(''));
                 }, true);
 
-                $scope.$watch('fields', function(ov, nv) {
+                $scope.$watch('fields', function(nv, ov) {
                     nv && $scope.parseFields(nv);
                 });
             }

@@ -2047,3 +2047,24 @@ body.tour-open .animated {
         display: inline-block;
     }
 }
+
+.input-code-password {
+    &-helper {
+        visibility: hidden;
+        pointer-events: none;
+        display: inline-block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        line-height: 2.7em;
+        color: #848484;
+    }
+    & input.ng-not-empty ~ &-helper {
+        visibility: visible;
+    }
+    input {
+        color: transparent;
+    }
+}
