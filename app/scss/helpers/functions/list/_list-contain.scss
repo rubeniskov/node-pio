@@ -1,0 +1,14 @@
+// Returns whether `$list` contains `$value`.
+//
+// @param {List}    $list  				- list to check
+// @param {*}       $value 				- value to look for
+//
+// @return {Bool}
+//
+// @example
+//     list-contain("a" "b" "c", "c") 	// true
+//     list-contain("a" "b" "c", "d") 	// false
+
+@function list-contain($list, $value) {
+  	@return not not index($list, $value);
+}

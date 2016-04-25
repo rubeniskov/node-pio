@@ -1,0 +1,74 @@
+$rows: 3;
+$cols: 10;
+$slots: ($rows * $cols);
+.chair-graph {
+    &-viewport {
+        padding-top: 50%;
+        overflow: hidden;
+        position: relative;
+    }
+    &-content {
+        position: absolute;
+        padding-top: 100%;
+        width: 100%;
+        top: -10%;
+        font-size: 1vw;
+        &:before,
+        &:after {
+            content: '';
+            width: 90%;
+            height: 50%;
+            border: 0.5em solid #EFEFEF;
+            border-bottom: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+            transform: translate(-50%, -100%);
+            margin-top: 5%;
+            border-radius: 50em 50em 0 0;
+        }
+        &:after {
+            width: 30%;
+            height: 20%;
+        }
+    }
+    &-host {
+        @include transform-origin(center center);
+        position: absolute;
+        width: 5%;
+        height: 5%;
+        border-radius: 1em;
+        background-color: $gray;
+        border: .5em solid;
+        &.is-connected {
+            color: $navy;
+        }
+        &.is-disconnected {
+            color: $dark-gray;
+        }
+        &.is-agree {
+            background-color: $navy;
+        }
+        &.is-disagree {
+            background-color: $red;
+        }
+        &.is-abstention {
+            background-color: $yellow;
+        }
+        &.is-unanswered {
+            background-color: $dark-gray;
+        }
+        @for $i from 0 to $slots {
+            &.is-slot-#{$i} {
+                $row: ($i % $rows);
+                $col: ($i % $cols);
+                $rin: $row / ($rows - 1);
+                $cin: $col / ($cols - 1);
+                @include transform(translate(-50%, -50%) rotate(90deg - $cin * 180deg));
+                top: 50% + ((2+$row) / $rows) * 30% * math-sin(- $PI * $cin);
+                left: 50% + ((2+$row) / $rows) * 30% * math-cos(- $PI * $cin);
+            }
+        }
+    }
+}

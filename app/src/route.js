@@ -2,7 +2,7 @@ define([], function() {
     return function($stateProvider, $urlRouterProvider, $locationProvider) {
 
         $stateProvider
-        .state('app', {
+            .state('app', {
                 url: '/app',
                 templateUrl: 'view/app.html',
                 abstract: true,
@@ -39,6 +39,7 @@ define([], function() {
             })
             .state('app.admin', {
                 url: '/admin',
+                abstract: true,
                 ncyBreadcrumb: {
                     label: '{{ "ADMINISTRATION" | translate }}'
                 },
@@ -84,6 +85,7 @@ define([], function() {
                 },
                 views: {
                     'main-view@app': {
+                        controller: 'pollCreateCtrl as $ctrl',
                         templateUrl: 'view/poll-create.html',
                     }
                 }
@@ -98,6 +100,7 @@ define([], function() {
                 },
                 views: {
                     'main-view@app': {
+                        controller: 'pollDetailsCtrl as $ctrl',
                         templateUrl: 'view/poll-detail.html',
                     }
                 }
@@ -148,10 +151,29 @@ define([], function() {
             })
             .state('sign-in', {
                 url: '/sign-in',
-                templateUrl: 'view/sign-in.html',
                 data: {
                     pageTitle: 'Sign In',
                     specialClass: 'gray-bg'
+                },
+                views: {
+                    '': {
+                        templateUrl: 'view/sign-in.html'
+                    }
+                },
+                resolve: {
+                    redirect: function($q, $state, $injector, $timeout) {
+                        var deferred = $q.defer(),
+                            jwt = $injector.get('jwtProvider');
+                        $timeout(function() {
+                            if (jwt.isTokenExpired()) {
+                                deferred.resolve();
+                            } else {
+                                deferred.reject();
+                                $state.go('app.dashboard');
+                            }
+                        });
+                        return deferred.promise;
+                    }
                 }
             });
 

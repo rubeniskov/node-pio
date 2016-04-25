@@ -1,0 +1,18 @@
+// Get or add the unit of `$number` by the `$unit` param.
+//
+// @param {Number}  $number
+// @param {String}  $unit (null) 		- if is set the unit number will change and returns
+//
+// @return {String}
+//
+// @example
+//     number-unit(60px)      			// px
+//     number-unit(60px, em) 			// 60em
+
+@function number-unit($number, $unit:null) {
+    @if $unit != null {
+       	@return number-unit-set($number, $unit);
+    }
+
+    @return number-unit-get( $number );
+}

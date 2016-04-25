@@ -1,0 +1,15 @@
+// Returns the limitized `$number` between its arguments `$min` and `$max`.
+//
+// @param {Number} 	$number  			- number to be truncate
+// @param {Number}  $min (null) 		- min value accepted
+// @param {Number}  $max (null) 		- max value accepted
+//
+// @return {Number}
+//
+// @example
+//     number-between(10px, 0, 10px)   	// 10px
+//     number-between(15em, 0, 10em)   	// 10px
+
+@function number-between($number, $min: null, $max: null) {
+	@return min($max or $NUMBER_MAX, max($min or $NUMBER_MIN, $number));
+}

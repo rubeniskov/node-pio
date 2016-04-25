@@ -1,0 +1,15 @@
+// Adds `$value` as first index of `$list`.
+//
+// @param {List} 	$list  				- list to prepend value
+// @param {*}    	$value 				- value to prepend to the list
+// @param {String}  $separator (null)	- list separator
+//
+// @return {List}
+//
+// @example
+//     list-prepend("b" "c" "d", "a")   // ("a" "b" "c" "d")
+//     list-prepend(2 3 4, 1)    		// (1 2 3 4)
+
+@function list-prepend($list, $value, $separator:null) {
+    @return list-insert($list,$value, 1, $separator);
+}

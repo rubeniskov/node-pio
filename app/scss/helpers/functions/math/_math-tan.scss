@@ -1,0 +1,14 @@
+// Returns the tangent of `$x`.
+//
+// @param {Number} $x 					- A number in rad or deg. Assuming unitless number to be in rad.
+//
+// @return {Number}
+//
+// @example
+//     math-tan(0.5236) 				// 0.57735
+//     math-tan(30deg)  				// 0.57735
+
+@function math-tan($x) {
+    $x: number-unit-angle($x, "rad", true);
+    @return math-sin($x) / math-cos($x);
+}

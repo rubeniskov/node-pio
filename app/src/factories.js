@@ -1,5 +1,9 @@
 require([
-    'factories/jwtInterceptor',
     'factories/jwtProvider',
-    'factories/user'
+    'factories/ioProvider',
+    'factories/authProvider',
+    'factories/swalProvider',
+    'factories/userProvider',
+    'factories/pollProvider',
+    'factories/hostProvider'
 ]);

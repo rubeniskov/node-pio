@@ -1,0 +1,14 @@
+// Returns the sine of `$x`.
+//
+// @param {Number} $x 					- A number in rad or deg. Assuming unitless number to be in rad.
+//
+// @return {Number}
+//
+// @example
+//     math-sin(1.0472) 				// 0.86603
+//     math-sin(60deg)  				// 0.86603
+
+@function math-sin($x) {
+    $x: number-unit-angle($x, "rad", true);
+    @return math-maclaurin($x, 3, $x);
+}

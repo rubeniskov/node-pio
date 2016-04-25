@@ -4,7 +4,7 @@ const   express     = require('express'),
         router      = express.Router();
 
 
-module.exports = function(app, opts, cfg){
+module.exports = function(app, cfg, opts, cert){
     var utils = {
             path: function(){
                 return path.join.apply(null, [
@@ -27,11 +27,11 @@ module.exports = function(app, opts, cfg){
             });
 
     return router
-            .use(require('./index.js')(app, opts, cfg, utils))
-            .use(require('./dist.js')(app, opts, cfg, utils))
-            .use(require('./view.js')(app, opts, cfg, utils))
-            .use(require('./font.js')(app, opts, cfg, utils))
-            .use(require('./partial.js')(app, opts, cfg, utils))
-            .use(require('./media.js')(app, opts, cfg, utils))
-            .use(require('./error.js')(app, opts, cfg, utils));
+            .use(require('./index.js')(app, cfg, opts, utils))
+            .use(require('./dist.js')(app, cfg, opts, utils))
+            .use(require('./view.js')(app, cfg, opts, utils))
+            .use(require('./font.js')(app, cfg, opts, utils))
+            .use(require('./partial.js')(app, cfg, opts, utils))
+            .use(require('./media.js')(app, cfg, opts, utils))
+            .use(require('./error.js')(app, cfg, opts, utils));
 }

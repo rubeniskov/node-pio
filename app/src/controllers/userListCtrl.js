@@ -6,21 +6,21 @@ define(['app'], function(app) {
         $scope.pieChart = {
             options: {
                 delimiter: null,
-                fill: ["#ec4758", "#1ab394", "#f3f3f4"],
+                fill: ['#ec4758', '#1ab394', '#f3f3f4'],
                 height: null,
                 radius: 20,
                 width: null
 
             },
             data: [Math.random(),Math.random(),Math.random()]
-        }
+        };
 
         self.tableGridOptions = {
             sAjaxDataProp: 'data',
             sPaginationType: 'full_numbers',
             serverSide: true,
             processing: true
-        }
+        };
 
         self.tableGridColumns = [{
             data: 'id',
@@ -32,9 +32,9 @@ define(['app'], function(app) {
             title: $filter('translate')('AVATAR'),
             sortable: true,
             render: function(data, type, full, meta) {
-                return '<span class="client-avatar"><img alt="image" src="media/' + 
-                (Math.floor(Math.random() * 10)%2===0 ? 'no_avatar_man.png' : 'no_avatar_woman.png') 
-                + '"></span>';
+                return '<span class="client-avatar"><img alt="image" src="media/' +
+                (Math.floor(Math.random() * 10)%2===0 ? 'no_avatar_man.png' : 'no_avatar_woman.png') +
+                '"></span>';
             }
         }, {
             data: 'name',

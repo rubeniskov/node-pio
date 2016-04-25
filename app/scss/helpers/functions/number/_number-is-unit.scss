@@ -1,0 +1,13 @@
+// Checks if `$number` has unit metric.
+//
+// @param {Number} 	$number  			- number to be checked
+//
+// @return {Bool}
+//
+// @example
+//     number-is-unit(10px)   			// true
+//     number-is-unit(15)   			// false
+
+@function number-is-unit($number) {
+	@return unitless($number) == false;
+}

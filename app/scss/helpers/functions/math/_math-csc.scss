@@ -1,0 +1,14 @@
+// Returns the cosecant of `$x`.
+//
+// @param {Number} $x 					- A number in rad or deg. Assuming unitless number to be in rad.
+//
+// @return {Number}
+//
+// @example
+//     math-csc(1.0472) 				// 1.1547
+//     math-csc(60deg)  				// 1.1547
+
+@function math-csc($x) {
+    $x: number-unit-angle($x, "rad", true);
+    @return 1 / math-sin($x);
+}

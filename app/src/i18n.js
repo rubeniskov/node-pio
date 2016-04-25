@@ -25,7 +25,13 @@ define([], function() {
             SUMMARY: 'Summary',
             STATUS: 'Status',
             NAME: 'Name',
-            AVATAR: 'Avatar'
+            AVATAR: 'Avatar',
+            POLLINGS: 'Pollings',
+            NOTES: 'Notes',
+            EMAIL: 'Email',
+            DATE: 'Date',
+            SAVE: 'Save',
+            CANCEL: 'Cancel'
         });
 
         $translateProvider.translations('es', {
@@ -52,7 +58,13 @@ define([], function() {
             SUMMARY: 'Resumen',
             STATUS: 'Estado',
             NAME: 'Nombre',
-            AVATAR: 'Avatar'
+            AVATAR: 'Avatar',
+            POLLINGS: 'Votaciones',
+            NOTES: 'Notas',
+            EMAIL: 'Correo',
+            DATE: 'Fecha',
+            SAVE: 'Guardar',
+            CANCEL: 'Cancelar'
         });
 
         $translateProvider.useSanitizeValueStrategy('escapeParameters');

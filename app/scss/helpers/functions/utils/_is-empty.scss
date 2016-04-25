@@ -1,0 +1,9 @@
+// Returns if `$value` is empty.
+//
+// @param {*} $value - value to check
+//
+// @return {Bool}
+
+@function is-empty($value) {
+    @return not if($value==null, false, $value and $value !=null and $value !="" and $value !=());
+}

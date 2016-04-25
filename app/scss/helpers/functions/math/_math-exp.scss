@@ -1,0 +1,17 @@
+// Returns E^x, where `$x` is the argument, and E is Euler's constant, the base of the natural logarithms.
+//
+// @param {Number} $x
+//
+// @return {Number}
+//
+// @example
+//     math-exp(1)  					// 2.71828
+//     math-exp(-1) 					// 0.36788
+
+@function math-exp($x) {
+    $ret: 0;
+    @for $n from 0 to $MI {
+        $ret: $ret + math-pow($x, $n) / math-fact($n);
+    }
+    @return $ret;
+}

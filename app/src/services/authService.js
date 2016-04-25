@@ -1,24 +1,28 @@
-define(['app', 'crypto-js'], function(app, crypto){
-    app.service('authService', ['$q', 'apiService', 'jwtProvider', function ($q, apiService, jwtProvider) {
+define(['app'], function(app){
+    app.service('authService', function ($q, $rootScope, $timeout, authProvider, ioService) {
 
         var self = this;
 
         self.signIn = function (id, password) {
-            return apiService.authenticate({
-                id: id,
-                password: crypto.HmacSHA1(password, 'secret')
-            }).then(function(response){
-                jwtProvider.setToken(response.data.token);
-            });
-        };
-
-        self.signUp = function (data) {
-            return apiService.user.create(data);
+            return $q.when(authProvider.authenticate(id, password), ioService.reconnect())
+                        .then(function(){
+                            $rootScope.$emit('$authTokenProvided');
+                        });
         };
 
         self.signOut = function (username, password) {
-                jwtProvider.removeToken();
-            return $q.resolve();
+            return $q.when(authProvider.revoke(), ioService.disconnect())
+                        .then(function(){
+                            $rootScope.$emit('$authTokenExpired');
+                        });
         };
-    }]);
+
+        self.isSigned = function(){
+            return !authProvider.isTokenExpired();
+        };
+
+        $timeout(function(){
+            $rootScope.$emit('$authTokenExpired');
+        }, authProvider.getTokenEpirationTime());
+    });
 });

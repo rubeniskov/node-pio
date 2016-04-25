@@ -1,9 +1,13 @@
 module.exports = function(grunt) {
     return {
         options: {
-        //    logConcurrentOutput: true
+            logConcurrentOutput: true
         },
-        'build': ['build:app:css', 'build:app:js', 'copy:fonts'],
-        'live': ['karma:live-unit', 'protractor:live-e2e', 'watch']
+        'build': {
+            tasks: ['build:app:css', 'build:app:js', 'copy:fonts']
+        },
+        'live': {
+            tasks: ['watch:live-js-build', 'watch:live-css']
+        }
     };
 };

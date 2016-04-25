@@ -1,0 +1,38 @@
+// Transform `$angle` to other indicated by `$unit`.
+//
+// @param {Number}  $angle              - angle to be converted, assuming unitless number to be in rad.
+// @param {Number}  $unit               - unit to convert output angle
+// @param {Number}  $unit-less (false)  - bool to set unit-less returned angle 
+//
+// @return {Bool}
+//
+// @example
+//     number-unit-angle(60deg, rad)      // 1.0472rad
+//     number-unit-angle(1rad, deg, true) // 57.29578
+
+@function number-unit-angle($angle, $unit, $unit-less: false) {
+    @if unitless($angle) {
+        @return $angle;
+    }
+    $conversion_angle_factor: 1;
+    $input_angle_number: number-unit-less($angle);
+    $input_angle_unit: number-unit($angle);
+    $input_angle_unit_index: index($NUMBER_UNIT_ANGLE_STRINGS, $input_angle_unit);
+    $output_unit_index: index($NUMBER_UNIT_ANGLE_STRINGS, $unit);
+    @if not $input_angle_unit_index {
+        @warn "Unknown input angle unit `#{$angle_unit_index}`.";
+        @return false;
+    }
+    @if not $output_unit_index {
+        @warn "Unknown output angle unit `#{$angle_unit_index}`.";
+        @return false;
+    }
+    @if true {
+        // BUG LibSass angle conversion
+        $conversion_angle_factor: nth($NUMBER_UNIT_ANGLE_FACTORS, length($NUMBER_UNIT_ANGLE_STRINGS) * ( $input_angle_unit_index - 1) + $output_unit_index);
+    }
+    @else {
+        $conversion_angle_factor: nth($NUMBER_UNIT_ANGLE_VALUES, $input_angle_unit_index)/nth($NUMBER_UNIT_ANGLE_VALUES, $output_unit_index);
+    }
+    @return if($unit-less, 1, nth($NUMBER_UNIT_ANGLE_VALUES, $output_unit_index)) * $input_angle_number * $conversion_angle_factor;
+}

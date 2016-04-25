@@ -3,73 +3,31 @@ const _ = require('underscore');
 module.exports = function(router, orm, auth) {
 
     router.post('/poll/query', function(req, res) {
-
-        return res.status(200).json({
-            "draw": 1,
-            "recordsTotal": 57,
-            "recordsFiltered": 57,
-            "data": [{
-                "id": 860,
-                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-                "summary": [.1,.4,.5]
-            }, {
-                "id": 870,
-                "title": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium",
-                "summary": [.3,.6,.1]
-            }, {
-                "id": 870,
-                "title": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis",
-                "summary": [.3,.6,.1]
-            }, {
-                "id": 860,
-                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-                "summary": [.1,.4,.5]
-            }, {
-                "id": 870,
-                "title": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium",
-                "summary": [.3,.6,.1]
-            }, {
-                "id": 870,
-                "title": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis",
-                "summary": [.3,.6,.1]
-            }, {
-                "id": 860,
-                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-                "summary": [.1,.4,.5]
-            }, {
-                "id": 870,
-                "title": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium",
-                "summary": [.3,.6,.1]
-            }, {
-                "id": 870,
-                "title": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis",
-                "summary": [.3,.6,.1]
-            }, {
-                "id": 860,
-                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-                "summary": [.1,.4,.5]
-            }, {
-                "id": 870,
-                "title": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium",
-                "summary": [.3,.6,.1]
-            }, {
-                "id": 870,
-                "title": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis",
-                "summary": [.3,.6,.1]
-            }]
-        });
+        orm.models.poll.datatable(req.body)
+            .then(function(results) {
+                res.status(200).json(results);
+            }, function(err) {
+                res.status(403).json(err);
+            });
     });
 
-    // router.put('/poll', function(req, res) {
-    //     orm.models.user.create(req.body)
-    //         .then(function(){
-    //             res.status(200).json({
-    //                 message: 'User created successfully'
-    //             });
-    //         }, function(err){
-    //             res.status(400).json(err);
-    //         });
-    // });
+    router.put('/poll', function(req, res) {
+        orm.models.poll.create({
+            title: req.body.title,
+            notes: req.body.notes,
+            polling: req.body.polling,
+            creator: req.user.username
+        }).then(function(doc) {
+            res.status(200).json({
+                data: {
+                    id: doc._id
+                },
+                message: 'Poll created successfully'
+            });
+        }, function(err) {
+            res.status(403).json(err);
+        });
+    });
 
     // router.get('/poll/:id', function(req, res) {
     //     orm.models.user.findOne(_.extend({

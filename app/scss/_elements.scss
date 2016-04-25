@@ -2038,3 +2038,12 @@ a.forum-item-title:hover {
 body.tour-open .animated {
     animation-fill-mode: initial;
 }
+
+.chair-graph {
+    &-content {
+
+    }
+    &-host {
+        display: inline-block;
+    }
+}

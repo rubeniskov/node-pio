@@ -1,0 +1,15 @@
+// Adds `$value` as last index of `$list`.
+//
+// @param {List} $	list  				- list to append value
+// @param {*}    	$value 				- value to append to the list
+// @param {String}  $separator (null)	- list separator
+//
+// @return {List}
+//
+// @example
+//     list-append("a" "b" "c", "d")   	// ("a" "b" "c" "d")
+//     list-append(1 2 3, 4)    		// (1 2 3 4)
+
+@function list-append($list, $value, $separator:null) {
+    @return list-insert($list,$value, null, $separator);
+}

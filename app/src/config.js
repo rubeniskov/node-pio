@@ -1,14 +1,18 @@
 define(['app', 'route', 'i18n'], function(app, route, i18n) {
     return app
-        .constant('JWT_HEADER', 'x-access-token')
-        .constant('API_URL', 'http://' + window.location.hostname + ':8080/api')
+        .constant('API_URL',
+            window.location.protocol + '//' +
+            window.location.host + '/api')
         .config(function(
+            API_CONFIG,
             $locationProvider,
             $stateProvider,
             $urlRouterProvider,
             $resourceProvider,
             $translateProvider,
             $httpProvider,
+            jwtInterceptorProvider,
+            laddaProvider,
             localStorageServiceProvider,
             cfpLoadingBarProvider) {
 
@@ -20,6 +24,19 @@ define(['app', 'route', 'i18n'], function(app, route, i18n) {
             localStorageServiceProvider
                 .setPrefix(app.name)
                 .setStorageType('localStorage');
+
+            jwtInterceptorProvider.tokenGetter = function(jwtProvider) {
+                return jwtProvider.getToken();
+            };
+
+            jwtInterceptorProvider.authHeader = API_CONFIG.auth.header;
+            jwtInterceptorProvider.authPrefix = API_CONFIG.auth.prefix;
+
+            laddaProvider.setOption({
+                style: 'zoom-in',
+                spinnerSize: 35,
+                spinnerColor: '#ffffff'
+            });
 
             route($stateProvider, $urlRouterProvider, $locationProvider);
 

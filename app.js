@@ -1,10 +1,17 @@
-var express     = require('express'),
+const
+    app         = require('express')(),
     path        = require('path'),
     morgan      = require('morgan'),
     colors      = require('colors'),
     mongoose    = require('mongoose'),
     fs          = require('fs'),
-    app         = express(),
+    cert        = {
+        key: fs.readFileSync('ssl/server.key', 'utf8'),
+        pub: fs.readFileSync('ssl/server-pub.key', 'utf8'),
+        cert: fs.readFileSync('ssl/server.crt', 'utf8')
+    },
+    pkg         = JSON.parse(fs.readFileSync('package.json', 'utf8')),
+    http        = require('http').createServer(app),
     opts        = require('nomnom')
         .usage('Start webserver.\nUsage: $0')
         .option('port', {
@@ -85,13 +92,14 @@ morgan.format('api', [
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 
+app.locals.version = pkg.version;
+app.locals.name = pkg.name;
+
 app.orm = require('./orm/orm.js')({
     hostname: 'localhost',
     port: 27017,
     db: 'polls'
 });
-
-app.io = require('socket.io')(app.server);
 
 // app.use(require('node-sass').middleware({
 //          src: __dirname + '/app/scss', //where the sass files are
@@ -100,16 +108,11 @@ app.io = require('socket.io')(app.server);
 // }));
 
 app
-    .use('/api', require('./api/api.js')(app, opts, cfg.api))
-    .use('/',    require('./server/server.js')(app, opts, cfg.app))
-    .listen(opts.port, function() {
-        opts.debug && app.use(morgan('app'));
-        console.log('App listening on port ' + opts.port);
-    });
+    .use('/api', require('./api/api.js')(app, cfg.api, opts, cert))
+    .use('/',    require('./server/server.js')(app, cfg.app, opts, cert));
 
-app.io.on('connection', function() {
-    console.log('Socket.io Connected');
-});
+
+app.io = require('./io/io.js')(http, {}, opts, cert);
 
 //console.log(orm.models.role.read);
 
@@ -138,3 +141,8 @@ app.orm.models.user.create({
 // }, function(err){
 //     console.log('Error', err, JSON.stringify(err, null , 4));
 // });
+
+http.listen(opts.port, function() {
+        opts.debug && app.use(morgan('app'));
+        console.log('App listening on port ' + opts.port);
+    });

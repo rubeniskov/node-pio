@@ -1,8 +1,10 @@
 require([
     'controllers/mainCtrl',
     'controllers/authCtrl',
+    'controllers/langCtrl',
     'controllers/pollCreateCtrl',
     'controllers/pollListCtrl',
+    'controllers/pollDetailsCtrl',
     'controllers/userCreateCtrl',
     'controllers/userListCtrl'
 ]);

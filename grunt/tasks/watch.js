@@ -3,7 +3,7 @@ module.exports = function(grunt, data) {
         (/\-js\-/).test(task) && grunt.config('jshint.core-js.src', filepath);
     });
     return {
-        "live-js-bundle": {
+        'live-js-bundle': {
             options: {
                 spawn: true,
                 interrupt: false,
@@ -12,7 +12,7 @@ module.exports = function(grunt, data) {
             files: 'app/src/{,*/}*.js',
             tasks: ['requirejs:bundle']
         },
-        "live-js-build": {
+        'live-js-build': {
             options: {
                 spawn: true,
                 interrupt: false,
@@ -21,7 +21,7 @@ module.exports = function(grunt, data) {
             files: 'app/src/{,*/}*.js',
             tasks: ['jshint:build', 'requirejs:build']
         },
-        "live-css": {
+        'live-css': {
             files: 'app/scss/{,*/}*.scss',
             tasks: ['sass'],
             options: {

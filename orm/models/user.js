@@ -13,10 +13,7 @@ module.exports = function(schema){
         password: {
             type: String,
             required: [true, 'user.password is required'],
-            permissions: 'o+s',
-            // default: function(){
-            //     console.log(this);
-            // }
+            permissions: 'o+cru'
         },
         name: {
             first: {
@@ -44,7 +41,7 @@ module.exports = function(schema){
         }
     }, {
         autoIndex: false,
-        permissions: 'o+crud,og+r',
-        ownership: 'admin:user'
+        permissions: 'o+crud,g+r',
+        ownership: 'admin:users'
     });
 }

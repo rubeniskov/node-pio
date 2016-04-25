@@ -1,0 +1,29 @@
+// Returns the natural logarithm of `$x`.
+//
+// @param {Number} $x
+//
+// @return {Number}
+//
+// @example
+//     math-log(2)                      // 0.69315
+//     math-log(10)                     // 2.30259
+
+@function math-log($x) {
+    @if $x <= 0 {
+        @return 0 / 0;
+    }
+    $k: nth(math-frexp($x / $SQRT2), 2);
+    $x: $x / math-ldexp(1, $k);
+    $x: ($x - 1) / ($x + 1);
+    $x2: $x * $x;
+    $i: 1;
+    $s: $x;
+    $sp: null;
+    @while $sp != $s {
+        $x: $x * $x2;
+        $i: $i + 2;
+        $sp: $s;
+        $s: $s + $x / $i;
+    }
+    @return $LN2 * $k + 2 * $s;
+}

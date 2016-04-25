@@ -1,0 +1,16 @@
+// Returns a random nuber limited by its arguents `$min` and `$max`.
+//
+// @param {Number} 	$min (null) 		- min value accepted
+// @param {Number} 	$max (null)  		- max value accepted
+//
+// @return {Number}
+//
+// @example
+//     number-rand(0, 10)   			// >0 and <10
+
+@function number-rand($min: null, $max: null, $factor: 1000000000) {
+    @if $min != null and $max != null {
+        @return floor(random($factor) / $factor * $max) + $min;
+    }
+    @return false;
+}

@@ -1,0 +1,14 @@
+<div class="input-text-stack">
+    <div ng-repeat="item in _data track by $index" class="slide-down m-b">
+        <div class="input-group m-b"> <span class="input-group-addon">{{$index + 1}}</span>
+            <input type="text" class="form-control" placeholder="{{ 'TITLE' | translate }}" ng-model="_data[$index].title" ng-keyup="keyupHandler($event, $index)"> <span class="input-group-btn">
+            <button type="button" class="btn btn-danger" ng-if="!$last" ng-click="removeItem($event, $index)">
+                <i class="fa fa-remove"></i>
+            </button>
+            <button type="button" class="btn btn-primary" ng-if="$last" ng-click="addItem()">
+                <i class="fa fa-plus"></i>
+            </button>
+        </span> </div>
+        <div markdown-editor ng-model="_data[$index].notes"> </div>
+    </div>
+</div>

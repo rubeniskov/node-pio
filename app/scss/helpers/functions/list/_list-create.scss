@@ -1,0 +1,15 @@
+// Create a `$list` setting its `$separator`.
+//
+// @param {String} $separator ('space') - list separator
+// @param {List} $list (null)			- list
+//
+// @return {List}
+// @return {List}
+//
+// @example
+//     list-create(comma) 				// () - with comma separator
+//     list-create(space)  				// () - with space separator
+
+@function list-create( $separator:space, $list:null ) {
+  	@return join((), if( $list != null, $list, ()), $separator);
+}
