@@ -78,6 +78,7 @@ module.exports = function(app, cfg, opts, cert) {
             token ? jwt.verify(token, cert.pub, {
                 algorithms: ['RS256']
             }, function(err, decoded) {
+                req.user = decoded;
                 app.orm.auth(decoded.username, decoded.groups);
                 err ? res.status(403).json({
                     message: 'Failed to authenticate token.'
