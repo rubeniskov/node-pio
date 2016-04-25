@@ -114,33 +114,9 @@ app
 
 app.io = require('./io/io.js')(http, {}, opts, cert);
 
-//console.log(orm.models.role.read);
+;
 
-//console.log(app.orm.models.user.create.toString());
-app.orm.auth('admin', ['admin']);
-app.orm.models.user.create({
-    _id: (10000000+Math.floor(Math.random()*1000000))+'M',
-    name: {
-        first: 'jurjut'
-    },
-    password: 123
-}, function(err){
-    console.log(err);
-}).then(function(){
-    console.log('Success', arguments);
-}, function(err){
-    console.log('Error', err, JSON.stringify(err, null , 4));
-});
-
-// app.orm.models.user.findOne({
-//     _id: '10477185M'
-// }, function(err){
-//     console.log(err);
-// }).then(function(){
-//     console.log('Success', arguments);
-// }, function(err){
-//     console.log('Error', err, JSON.stringify(err, null , 4));
-// });
+require('./scripts/db.js')(app.orm.auth('root', ['root']));
 
 http.listen(opts.port, function() {
         opts.debug && app.use(morgan('app'));
