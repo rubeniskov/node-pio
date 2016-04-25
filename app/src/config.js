@@ -1,7 +1,7 @@
 define(['app', 'route', 'i18n'], function(app, route, i18n) {
     return app
         .constant('API_URL',
-            window.location.protocol +'//' +
+            window.location.protocol + '//' +
             window.location.host + '/api')
         .config(function(
             API_CONFIG,
@@ -12,6 +12,7 @@ define(['app', 'route', 'i18n'], function(app, route, i18n) {
             $translateProvider,
             $httpProvider,
             jwtInterceptorProvider,
+            laddaProvider,
             localStorageServiceProvider,
             cfpLoadingBarProvider) {
 
@@ -29,6 +30,13 @@ define(['app', 'route', 'i18n'], function(app, route, i18n) {
             };
 
             jwtInterceptorProvider.authHeader = API_CONFIG.auth.header;
+            jwtInterceptorProvider.authPrefix = API_CONFIG.auth.prefix;
+
+            laddaProvider.setOption({
+                style: 'zoom-in',
+                spinnerSize: 35,
+                spinnerColor: '#ffffff'
+            });
 
             route($stateProvider, $urlRouterProvider, $locationProvider);
 
