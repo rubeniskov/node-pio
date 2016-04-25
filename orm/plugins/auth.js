@@ -121,6 +121,9 @@ module.exports = function(utils) {
                     });
                     return {
                         check: function(access) {
+                            if (user === 'root')
+                                return true;
+
                             var ac = access.split(/[\s\,\+]+/),
                                 ma = mma.map(function(vma) {
                                     return ac.filter(function(vac) {
@@ -172,13 +175,13 @@ module.exports = function(utils) {
 
     return {
         expose: {
-            authenticate: function(user, password){
+            authenticate: function(user, password) {
                 var deferred = q.defer();
                 console.log('authenticate', user, password);
                 deferred.resolve();
                 return deferred.promise;
             },
-            revoke: function(){
+            revoke: function() {
 
             },
             auth: function(user, groups) {
@@ -193,7 +196,7 @@ module.exports = function(utils) {
                     create: ['save', function(query, next) {
                         var auth = authorizer(_user, _groups),
                             fields, forbidden;
-
+                        console.log(_user, _groups);
                         if (auth.check('create')) {
                             fields = checkFields(schema.paths, auth, 'create');
                             forbidden = _.intersection(_.keys(query._doc), fields[0])[0];
@@ -208,7 +211,7 @@ module.exports = function(utils) {
                             fields, forbidden;
                         if (auth.check('read')) {
                             fields = checkFields(query.schema.paths, auth, 'read');
-                            forbidden = _.intersection(_.uniq((query._fields || []).concat(_.keys(query._conditions))), fields[0])[0];
+                            forbidden = _.intersection(_.uniq(_.keys(query._fields||{}).concat(_.keys(query._conditions))), fields[0])[0];
                             console.log(_user, _groups, forbidden);
                             if (forbidden)
                                 return next(new AuthError('you do not have read access to the following fields: [' + forbidden + ']'));
@@ -270,11 +273,11 @@ module.exports = function(utils) {
                 options.recursive = utils.isBoolean(options.recursive) ? options.recursive : false;
             };
 
-            schema.statics.delete = function(){
+            schema.statics.delete = function() {
                 return this.remove.apply(this, arguments);
             };
 
-            schema.statics.read = function(){
+            schema.statics.read = function() {
                 return this.find.apply(this, arguments);
             };
 
