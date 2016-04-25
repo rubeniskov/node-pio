@@ -25,7 +25,7 @@
     "angular-mocks": "^1.5.3",
     "angular-bootstrap": "~1.1.2",
     "bootstrap": "~3.3.6",
-    "moment": "~2.10.6",
+    "moment": "^2.13.0",
     "animate.css": "~3.4.0",
     "angular": "~1.5.0",
     "pace": "~1.0.2",

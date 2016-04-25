@@ -187,6 +187,7 @@ module.exports = function(utils) {
             auth: function(user, groups) {
                 _user = user;
                 _groups = groups;
+                return this;
             }
         },
         plugin: function(schema, options) {
@@ -196,7 +197,7 @@ module.exports = function(utils) {
                     create: ['save', function(query, next) {
                         var auth = authorizer(_user, _groups),
                             fields, forbidden;
-                        console.log(_user, _groups);
+
                         if (auth.check('create')) {
                             fields = checkFields(schema.paths, auth, 'create');
                             forbidden = _.intersection(_.keys(query._doc), fields[0])[0];

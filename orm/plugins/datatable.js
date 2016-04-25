@@ -91,11 +91,13 @@ module.exports = function(utils) {
                     sortParameters = buildSortParameters(params);
 
                 if (isNaNorUndefined(draw, start, length)) {
-                    return deferred.reject(new Error('Some parameters are missing or in a wrong state. ' +
+                    deferred.reject(new Error('Some parameters are missing or in a wrong state. ' +
                         'Could be any of draw, start or length'));
+                    return deferred.promise;
                 }
                 if (!findParameters || !sortParameters) {
-                    return deferred.reject(new Error('Invalid findParameters or sortParameters'));
+                    deferred.reject(new Error('Invalid findParameters or sortParameters'));
+                    return deferred.promise;
                 }
 
                 self.count({}).then(function(count) {

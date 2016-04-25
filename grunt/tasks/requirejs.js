@@ -27,6 +27,7 @@ module.exports = function(grunt, factory) {
             'angular-loading-bar': '../lib/angular-loading-bar/build/loading-bar',
             'angular-ladda': '../lib/angular-ladda/dist/angular-ladda.min',
             'datatables': '../lib/datatables/media/js/jquery.dataTables',
+            'datatables-bootstrap': '../lib/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap',
             'almond': '../lib/almond/almond',
             'bootstrap-markdown': '../lib/bootstrap-markdown/js/bootstrap-markdown',
             'underscore': '../lib/underscore/underscore',
@@ -49,7 +50,7 @@ module.exports = function(grunt, factory) {
             shim: {
                 'angular': {
                     exports: 'angular',
-                    deps: ['jquery']
+                    deps: ['jquery', 'moment']
                 },
                 'angular-peity': {
                     deps: ['peity']
@@ -61,7 +62,7 @@ module.exports = function(grunt, factory) {
                     deps: ['bootstrap-markdown']
                 },
                 'angular-datatables': {
-                    deps: ['datatables']
+                    deps: ['datatables', 'datatables-bootstrap']
                 },
                 'angular-socket-io': {
                     deps: ['socket-io']
