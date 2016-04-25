@@ -33,12 +33,10 @@ module.exports = function(app, cfg, opts, cert) {
     router.post('/authenticate', function(req, res) {
 
         var credentials = JSON.parse(crypto.AES.decrypt(req.body.hash, pub).toString(crypto.enc.Utf8));
-        credentials = {
-            _id: '00000000A',
-            password: '1234'
-        };
-
-        app.orm.models.user.findOne(credentials)
+        app.orm.models.user.findOne({
+            _id: credentials.id,
+            password: credentials.password
+        })
             .then(function(user) {
                 if (user) {
                     var token = jwt.sign({
