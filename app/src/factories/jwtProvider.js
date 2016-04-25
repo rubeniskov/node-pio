@@ -13,14 +13,18 @@ define(['app'], function(app) {
                     localStorageService.remove(header);
                 },
                 isTokenExpired: function() {
-                    return !factory.getTokenExpirationDate() || jwtHelper.isTokenExpired(factory.getToken());
+                    var token = factory.getToken();
+                    return !token || jwtHelper.isTokenExpired(token);
                 },
                 decodeToken: function(){
                     return jwtHelper.decodeToken(factory.getToken());
                 },
                 getTokenExpirationDate: function(){
                     var token = factory.getToken();
-                    return !!token && jwtHelper.getTokenExpirationDate(token);
+                    return token ? jwtHelper.getTokenExpirationDate(token) : new Date();
+                },
+                getTokenEpirationTime: function(){
+                    return Math.max(factory.getTokenExpirationDate().getTime() - new Date().getTime(), 0);
                 }
             };
         return factory;

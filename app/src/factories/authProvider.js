@@ -16,7 +16,10 @@ define(['app', 'crypto-js'], function(app, crypto) {
             revoke: function(){
                 jwtProvider.removeToken();
                 return $q.resolve();
-            }
+            },
+            isTokenExpired: jwtProvider.isTokenExpired,
+            getTokenExpirationDate: jwtProvider.getTokenExpirationDate,
+            getTokenEpirationTime: jwtProvider.getTokenEpirationTime
         }
     });
 });
