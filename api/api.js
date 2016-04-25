@@ -21,7 +21,8 @@ module.exports = function(app, cfg, opts, cert) {
         res.json({
             auth: {
                 type: 'jwt',
-                header: 'x-access-token'
+                header: 'x-access-token',
+                prefix: ''
             },
             key: cert.pub.replace(/\-{5}([\sa-zA-Z]+)\-{5}|\n/gi, ''),
             version: app.locals.version,
@@ -69,6 +70,7 @@ module.exports = function(app, cfg, opts, cert) {
             token ? jwt.verify(token, cert.pub, {
                 algorithms: ['RS256']
             }, function(err, decoded) {
+                req.user = decoded;
                 err ? res.status(403).json({
                     message: 'Failed to authenticate token.'
                 }) : next();
