@@ -25,16 +25,18 @@ module.exports = function(grunt, factory) {
             'angular-local-storage': '../lib/angular-local-storage/dist/angular-local-storage',
             'angular-datatables': '../lib/angular-datatables/dist/angular-datatables',
             'angular-loading-bar': '../lib/angular-loading-bar/build/loading-bar',
+            'angular-ladda': '../lib/angular-ladda/dist/angular-ladda.min',
             'datatables': '../lib/datatables/media/js/jquery.dataTables',
             'almond': '../lib/almond/almond',
             'bootstrap-markdown': '../lib/bootstrap-markdown/js/bootstrap-markdown',
             'underscore': '../lib/underscore/underscore',
             'jquery': '../lib/jquery/dist/jquery',
-            'jquery': '../lib/jquery/dist/jquery',
             'peity': '../lib/peity/jquery.peity',
             'moment': '../lib/moment/min/moment-with-locales',
             'swal': '../lib/sweetalert/dist/sweetalert-dev',
             'pace': '../lib/pace/pace',
+            'spin': '../lib/ladda/js/spin',
+            'ladda': '../lib/ladda/js/ladda',
             'crypto-js': '../lib/crypto-js/index',
             'socket-io': '../lib/socket.io-client/socket.io'
         },
@@ -63,6 +65,9 @@ module.exports = function(grunt, factory) {
                 },
                 'angular-socket-io': {
                     deps: ['socket-io']
+                },
+                'angular-ladda': {
+                    deps: ['ladda', 'spin']
                 },
                 'peity': {
                     deps: ['jquery']
