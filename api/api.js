@@ -44,7 +44,7 @@ module.exports = function(app, cfg, opts, cert) {
         })
             .then(function(user) {
                 if (user) {
-                    if(!user.status);
+                    if(!user.status)
                         res.status(403).json({
                             message: 'User banned!'
                         });
