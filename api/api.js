@@ -31,14 +31,24 @@ module.exports = function(app, cfg, opts, cert) {
     });
 
     router.post('/authenticate', function(req, res) {
-
         var credentials = JSON.parse(crypto.AES.decrypt(req.body.hash, pub).toString(crypto.enc.Utf8));
-        app.orm.models.user.findOne({
-            _id: credentials.id,
+        app.orm.auth('root', ['root']).models.user.findOne({
+            $or: [{
+                _id: credentials.id
+            }, {
+                username: credentials.id,
+            }, {
+                email: credentials.id
+            }],
             password: credentials.password
         })
             .then(function(user) {
                 if (user) {
+                    if(!user.status);
+                        res.status(403).json({
+                            message: 'User banned!'
+                        });
+
                     var token = jwt.sign({
                         username: user.username,
                         groups: user.groups
@@ -68,7 +78,7 @@ module.exports = function(app, cfg, opts, cert) {
             token ? jwt.verify(token, cert.pub, {
                 algorithms: ['RS256']
             }, function(err, decoded) {
-                req.user = decoded;
+                app.orm.auth(decoded.username, decoded.groups);
                 err ? res.status(403).json({
                     message: 'Failed to authenticate token.'
                 }) : next();

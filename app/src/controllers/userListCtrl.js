@@ -35,24 +35,24 @@ define(['app'], function(app) {
                 '"></span>';
             }
         }, {
-            data: 'name.full',
+            data: 'name',
             title: $filter('translate')('NAME'),
             sortable: true,
-            // render: function(data, type, full, meta) {
-            //     return 'Ignacio Fernandez';
-            // }
+            render: function(data, type, full, meta) {
+                return full.name.first + ' ' + (full.name.last||'');
+            }
         }, {
             data: 'email',
             title: $filter('translate')('EMAIL'),
-            sortable: true,
-            render: function(data, type, full, meta) {
-                return 'ifernandez@gmail.com';
-            }
+            sortable: true
         }, {
             data: 'status',
+            searchable: false,
             title: $filter('translate')('STATUS'),
             render: function(data, type, full, meta) {
-                return '<span class="label label-primary">Active</span>';
+                return data ?
+                    '<span class="label label-primary">Active</span>' :
+                    '<span class="label">Deactive</span>';
             }
         }];
     });

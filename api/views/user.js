@@ -1,11 +1,6 @@
 const _ = require('underscore');
 
 module.exports = function(router, orm, auth) {
-    // GET, POST, PUT, and DELETE CRUD
-    // GET, UPDATE, CREATE, DELETE
-    // 0000 1111 1+2+4+8 16
-    // orm.models.user
-    //     .expose(router, auth);
 
     router.post('/user/query', function(req, res) {
         orm.models.user.datatable(req.body)

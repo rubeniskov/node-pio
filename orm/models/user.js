@@ -11,6 +11,12 @@ module.exports = function(schema){
             required: [true, 'user.id is required'],
             match: [/^(([A-Z]\d{8})|\d{8}|(\d{8}[A-Z])|([A-Z]\d{8}[A-Z]))$/, 'user.id invalid format']
         },
+        username: {
+            type: String,
+            unique: true,
+            dropDups: true,
+            required: [true, 'user.username is required']
+        },
         password: {
             type: String,
             required: [true, 'user.password is required'],
@@ -41,7 +47,8 @@ module.exports = function(schema){
             type: Date
         },
         status : {
-            type: Number
+            type: Number,
+            default: 1
         },
         groups: [ String ],
         pristine: {
