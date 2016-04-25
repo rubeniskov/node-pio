@@ -8,10 +8,12 @@ define(['app'], function(app) {
             link: function($scope, $element, $attrs, $ctrls) {
                 $scope.fields = 'CODE';
                 $scope.signIn = function() {
-                    $scope.auth.signIn($scope.id, $scope.password)
-                        .then(function(){
-                            $state.go('app.dashboard');
-                        });
+                    $scope.loading = true;
+                    $scope.auth.signIn($scope.id, $scope.password).then(function(){
+                        $scope.loading = false;
+                    }, function(){
+                        $scope.loading = false;
+                    });
                 };
             }
         };

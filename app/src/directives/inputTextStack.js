@@ -13,7 +13,7 @@ define(['app', 'underscore'], function(app, _) {
                 $scope.addItem = function() {
                     $scope._data.push({
                         title: '',
-                        description: ''
+                        notes: ''
                     });
                 };
 

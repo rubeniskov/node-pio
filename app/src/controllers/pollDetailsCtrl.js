@@ -1,4 +1,4 @@
-define(['app'], function(app) {
+define(['app', 'moment'], function(app, moment) {
     app.controller('pollDetailsCtrl', function($scope, $filter) {
 
         var self = this;
@@ -25,13 +25,18 @@ define(['app'], function(app) {
         self.tableGridColumns = [{
             data: 'id',
             title: $filter('translate')('ID'),
-            sortable: true,
+            sortable: false,
             visible: false
+        }, {
+            data: '__at',
+            sortable: false,
+            visible: true
         }, {
             data: 'title',
             title: $filter('translate')('TITLE'),
             sortable: true,
             render: function(data, type, full, meta) {
+                console.log(data, type, full, meta);
                 return '' +
                     '<a ui-sref="app.admin.poll.details({id: 0})" class="faq-question">{{row.title}}</a>' +
                     '<small>Added by <strong>Alex Smith</strong> <i class="fa fa-clock-o"></i> Today 2:40 pm - 24.06.2014</small>';
@@ -48,7 +53,13 @@ define(['app'], function(app) {
                     '    <span class="tag-item">License</span>' +
                     '</div>';
             }
-        }, {
+        }, /*{
+            data: 'summary',
+            title: $filter('translate')('SUMMARY'),
+            render: function(data, type, full, meta) {
+                return '<pie-chart data="$parent.$parent.pieChart.data" options="$parent.$parent.pieChart.options"></pie-chart>';
+            }
+        },*/ {
             data: 'summary',
             title: $filter('translate')('SUMMARY'),
             render: function(data, type, full, meta) {

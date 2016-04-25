@@ -9,7 +9,7 @@ define(['app', 'jquery'], function(app, $) {
             options: {
                 'deferRender': true,
                 'ajax': {
-                    url: '/api/user/query',
+                    url: '/api/poll/query',
                     type: 'POST',
                     'headers': {
                         'x-access-token': jwtProvider.getToken()
