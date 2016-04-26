@@ -1,4 +1,8 @@
 {
+    "em": {
+        "email": null,
+        "password": null
+    },
     "app": {
         "dirname": "app",
         "build": {
