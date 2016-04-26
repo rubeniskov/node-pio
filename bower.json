@@ -51,7 +51,9 @@
     "angular-deferred-bootstrap": "^0.1.9",
     "angular-scroll": "^1.0.0",
     "angular-ladda": "^0.3.4",
-    "ladda": "0.9.8"
+    "ladda": "0.9.8",
+    "datatables-responsive": "^2.0.2",
+    "datatables.net": "^1.10.11"
   },
   "resolutions": {
     "jquery": "~2.1.4",
@@ -68,5 +70,8 @@
     "express",
     "socket"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "datatables.net-dt": "^1.10.11"
+  }
 }

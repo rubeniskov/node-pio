@@ -23,11 +23,14 @@ module.exports = function(grunt, factory) {
             'angular-jwt': '../lib/angular-jwt/dist/angular-jwt',
             'angular-oclazyload': '../lib/oclazyload/dist/ocLazyLoad',
             'angular-local-storage': '../lib/angular-local-storage/dist/angular-local-storage',
-            'angular-datatables': '../lib/angular-datatables/dist/angular-datatables',
             'angular-loading-bar': '../lib/angular-loading-bar/build/loading-bar',
             'angular-ladda': '../lib/angular-ladda/dist/angular-ladda.min',
-            'datatables': '../lib/datatables/media/js/jquery.dataTables',
-            'datatables-bootstrap': '../lib/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap',
+            'angular-datatables': '../lib/angular-datatables/dist/angular-datatables',
+            'angular-datatables-bootstrap': '../lib/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap',
+            'datatables.net': '../lib/datatables.net/js/jquery.dataTables',
+            'datatables-bootstrap': '../lib/datatables/media/js/dataTables.bootstrap',
+            'datatables-responsive': '../lib/datatables-responsive/js/dataTables.responsive',
+            'datatables-bootstrap-responsive': '../lib/datatables-responsive/js/responsive.bootstrap',
             'almond': '../lib/almond/almond',
             'bootstrap-markdown': '../lib/bootstrap-markdown/js/bootstrap-markdown',
             'underscore': '../lib/underscore/underscore',
@@ -62,13 +65,24 @@ module.exports = function(grunt, factory) {
                     deps: ['bootstrap-markdown']
                 },
                 'angular-datatables': {
-                    deps: ['datatables', 'datatables-bootstrap']
+                    deps: [
+                        'datatables.net',
+                        'datatables-bootstrap',
+                        'datatables-responsive',
+                        'angular-datatables-bootstrap'
+                    ]
                 },
                 'angular-socket-io': {
                     deps: ['socket-io']
                 },
                 'angular-ladda': {
                     deps: ['ladda', 'spin']
+                },
+                'datatables.net': {
+                    deps: [
+                        'jquery',
+                        // 'datatables-bootstrap-responsive'
+                    ]
                 },
                 'peity': {
                     deps: ['jquery']
