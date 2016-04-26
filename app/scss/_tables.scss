@@ -1,4 +1,7 @@
 .table-detail {
+    & > thead > tr > th {
+        border-bottom: 1em solid #efefef;
+    }
     & > tbody > tr {
         padding: 20px;
         border-bottom: solid $gray 2px;
@@ -7,4 +10,47 @@
             padding: 20px;
         }
     }
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0;
+    margin: 0;
+    &:hover {
+        padding: 0;
+        transition: all 0.4s ease;
+        background-color: $navy;
+        color: $white;
+        border: 1px solid transparent;
+        a {
+            background-color: transparent;
+            border-color: transparent;
+        }
+    }
+}
+table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 2em;
+    display: block;
+    position: absolute;
+    color: white;
+    border-radius: 0;
+    box-shadow: none;
+    box-sizing: content-box;
+    text-align: center;
+    text-indent: 0;
+    line-height: 6em;
+    content: "\f067";
+    background-color: $navy;
+    border: 0;
+    font-family: FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {
+    content: "\f068";
+    background-color: $red;
 }
