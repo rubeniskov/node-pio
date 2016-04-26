@@ -1,7 +1,5 @@
 const
-    crypto = require('crypto-js'),
-    fs = require('fs'),
-    pub = fs.readFileSync('./ssl/server-pub.key', 'utf8').replace(/\-{5}([\sa-zA-Z]+)\-{5}|\n/gi, '');
+    crypto = require('crypto-js');
 
 module.exports = function(schema){
     return schema({
