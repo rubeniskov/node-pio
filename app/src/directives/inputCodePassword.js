@@ -7,9 +7,12 @@ define(['app', 'underscore'], function(app, _) {
             templateUrl: 'partial/inputCodePassword.html',
             scope: {
                 fields: '=icpFields',
-                placeholders: '=?icpPlaceholders'
+                placeholders: '=?icpPlaceholders',
+                onChange: '&?icpChange'
             },
             controller: function($scope, $element) {
+
+                $scope.values = [];
 
                 $scope.parseFields = function(fields) {
                     if (_.isString(fields)) {
@@ -21,24 +24,30 @@ define(['app', 'underscore'], function(app, _) {
                 };
 
                 $scope.reset = function($event, $index) {
-                    $scope._fields[$index] = null;
+                    angular.forEach($scope.values, function(value, index){
+                        $scope.values[index] = index >= $index  ? '' : value;
+                    });
+                };
+
+                $scope.change = function() {
+                    $scope.$emit('change', $scope.values);
                 };
 
                 $scope.validate = function($event, $index) {
-                    if ($event.keyCode >= 48 && $event.keyCode <= 57)
+                    if ($event.keyCode < 14 || $event.keyCode >= 48 && $event.keyCode <= 57)
                         return true;
                     $event.preventDefault();
                 };
 
                 $scope.next = function($event, $index) {
                     if ($event.keyCode >= 48 && $event.keyCode <= 57) {
-                        var nextinput = $element.find('input').eq(($index + 1) % 4);
-                        if ($index !== 3) {
-                            $timeout(function(){
+                        var nextinput = $element.find('input').eq(($index + 1) % $scope.fields.length);
+                        if ($index < $scope.fields.length) {
+                            $timeout(function() {
                                 nextinput.focus();
-                            });
+                            }, 1);
                         } else {
-                            angular.element(':focus').closest('form').submit();
+                            angular.element(':focus');
                         }
                     }
                 };
@@ -47,9 +56,13 @@ define(['app', 'underscore'], function(app, _) {
                 var self = this,
                     model = $ctrls[0];
 
-                $scope.$watch('_fields', function(nv, ov) {
-                    nv && model.$setViewValue(nv.join(''));
-                }, true);
+                $scope.$on('change', function($event, $value){
+                    model.$setViewValue(($value=$value.join('')))
+                    $scope.onChange({
+                        $event: $event,
+                        $value: $value
+                    });
+                });
 
                 $scope.$watch('fields', function(nv, ov) {
                     nv && $scope.parseFields(nv);

@@ -7,6 +7,13 @@ define(['app'], function(app) {
             bindToController: true,
             link: function($scope, $element, $attrs, $ctrls) {
                 $scope.fields = 'CODE';
+
+                $scope.change = function($event){
+                    $scope.password &&
+                    $scope.password.length === 4 &&
+                    $scope.signIn();
+                };
+
                 $scope.signIn = function() {
                     $scope.loading = true;
                     $scope.auth.signIn($scope.id, $scope.password).then(function(){
