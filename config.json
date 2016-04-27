@@ -1,7 +1,11 @@
 {
     "em": {
-        "email": null,
-        "password": null
+        "host": "smtp.gmail.com",
+        "port": 25,
+        "auth": {
+            "user": "",
+            "pass": ""
+        }
     },
     "app": {
         "dirname": "app",

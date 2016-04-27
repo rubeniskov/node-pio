@@ -89,9 +89,9 @@ module.exports = function(app, cfg, opts, cert) {
         })(req.body.token || req.query.token || req.headers['x-access-token']);
     });
 
-    require('./views/user.js')(router, app.orm);
-    require('./views/poll.js')(router, app.orm);
-    require('./views/host.js')(router, app.orm);
+    require('./views/user.js')(router, app);
+    require('./views/poll.js')(router, app);
+    require('./views/host.js')(router, app);
 
     router.use(function(req, res, next) {
         res.status(404);

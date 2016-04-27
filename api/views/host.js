@@ -1,6 +1,6 @@
 const _ = require('underscore');
 
-module.exports = function(router, orm, auth) {
+module.exports = function(router, app, auth) {
 
     router.post('/host/query', function(req, res) {
 
@@ -61,7 +61,7 @@ module.exports = function(router, orm, auth) {
     });
 
     // router.put('/poll', function(req, res) {
-    //     orm.models.user.create(req.body)
+    //     app.orm.models.user.create(req.body)
     //         .then(function(){
     //             res.status(200).json({
     //                 message: 'User created successfully'
@@ -72,7 +72,7 @@ module.exports = function(router, orm, auth) {
     // });
 
     // router.get('/poll/:id', function(req, res) {
-    //     orm.models.user.findOne(_.extend({
+    //     app.orm.models.user.findOne(_.extend({
     //         _id : req.params.id
     //     }, req.body))
     //     .then(function(doc){

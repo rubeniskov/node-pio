@@ -1,9 +1,9 @@
 const _ = require('underscore');
 
-module.exports = function(router, orm, auth) {
+module.exports = function(router, app, auth) {
 
     router.post('/poll/query', function(req, res) {
-        orm.models.poll.datatable(req.body)
+        app.orm.models.poll.datatable(req.body)
             .then(function(results) {
                 res.status(200).json(results);
             }, function(err) {
@@ -12,7 +12,7 @@ module.exports = function(router, orm, auth) {
     });
 
     router.put('/poll', function(req, res) {
-        orm.models.poll.create({
+        app.orm.models.poll.create({
             title: req.body.title,
             notes: req.body.notes,
             polling: req.body.polling,
@@ -30,7 +30,7 @@ module.exports = function(router, orm, auth) {
     });
 
     // router.get('/poll/:id', function(req, res) {
-    //     orm.models.user.findOne(_.extend({
+    //     app.orm.models.user.findOne(_.extend({
     //         _id : req.params.id
     //     }, req.body))
     //     .then(function(doc){

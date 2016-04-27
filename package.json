@@ -35,15 +35,20 @@
     "colors": "^1.1.2",
     "deep-extend": "^0.4.1",
     "express": "^4.13.4",
+    "jsonfile": "^2.3.0",
+    "jsonpath": "^0.2.2",
     "jsonwebtoken": "^5.7.0",
     "mongoose": "^4.4.11",
     "morgan": "^1.7.0",
+    "nodemailer": "^2.3.2",
+    "nodemailer-smtp-transport": "^2.4.2",
     "nomnom": "^1.8.1",
     "npm": "^3.8.5",
     "q": "^1.4.1",
     "socket.io": "^1.4.5",
     "twig": "^0.8.9",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "underscore.string": "^3.3.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",

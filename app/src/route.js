@@ -131,7 +131,8 @@ define([], function() {
                 },
                 views: {
                     'main-view@app': {
-                        templateUrl: 'view/user-create.html',
+                        controller: 'userCreateCtrl as $ctrl',
+                        templateUrl: 'view/user-create.html'
                     }
                 }
             })

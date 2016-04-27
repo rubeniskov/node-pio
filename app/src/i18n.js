@@ -29,9 +29,17 @@ define([], function() {
             POLLINGS: 'Pollings',
             NOTES: 'Notes',
             EMAIL: 'Email',
+            USERNAME: 'Username',
+            ID: 'Identity',
             DATE: 'Date',
             SAVE: 'Save',
-            CANCEL: 'Cancel'
+            CANCEL: 'Cancel',
+            FORM_USER_CREATION: 'Form user creation',
+            FORM_POLL_CREATION: 'Form poll creation',
+            FORM_FIELD_REQUIRED: 'The field ({{field | translate}}) is required',
+            FORM_FIELD_INVALID_FORMAT: 'The field ({{field | translate}}) has not a valid format {{format}}',
+            FORM_FIELD_MIN_LENGTH: 'The field ({{field | translate}}) is too short',
+            FORM_FIELD_MAX_LENGTH: 'The field ({{field | translate}}) is too long'
         });
 
         $translateProvider.translations('es', {
@@ -62,9 +70,17 @@ define([], function() {
             POLLINGS: 'Votaciones',
             NOTES: 'Notas',
             EMAIL: 'Correo',
+            USERNAME: 'Username',
+            ID: 'Identificador',
             DATE: 'Fecha',
             SAVE: 'Guardar',
-            CANCEL: 'Cancelar'
+            CANCEL: 'Cancelar',
+            FORM_USER_CREATION: 'Formulario de creación de usuario',
+            FORM_POLL_CREATION: 'Formulario de creación de encuesta',
+            FORM_FIELD_REQUIRED: 'El campo ({{field | translate}}) es obligatorio',
+            FORM_FIELD_INVALID_FORMAT: 'El campo ({{field | translate}}) no corresponde con el formato {{format}}',
+            FORM_FIELD_MIN_LENGTH: 'El campo ({{field | translate }}) es demasiado corto',
+            FORM_FIELD_MAX_LENGTH: 'El campo ({{field | translate}}) es demasiado largo'
         });
 
         $translateProvider.useSanitizeValueStrategy('escapeParameters');

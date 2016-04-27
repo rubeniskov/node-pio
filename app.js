@@ -1,8 +1,6 @@
 const
     app         = require('express')(),
     path        = require('path'),
-    morgan      = require('morgan'),
-    colors      = require('colors'),
     mongoose    = require('mongoose'),
     fs          = require('fs'),
     cert        = {
@@ -44,81 +42,24 @@ const
         })
         .parse()
 
-var cfg     = JSON.parse(fs.readFileSync(opts.config, 'utf8'));
-
-//mongoose.connect('mongodb://localhost:27017/polls');
-
-morgan.format('app', [
-        'HTTP/:http-version'.magenta,
-        '<--'.green,
-        ':status'.yellow,
-        '\':method :url\''.green,
-        ':res[content-length]'.yellow,
-        'bytes',
-        ':response-time'.yellow,
-        'ms'
-    ].join(' '));
-
-morgan.token('bodypased', function(req, res){
-    return JSON.stringify(req.body, null, 2);
-})
-
-morgan.format('api', [
-        '[API]'.blue,
-        'HTTP/:http-version'.magenta,
-        '<--'.blue,
-        ':status'.yellow,
-        '\':method :url\''.green,
-        ':res[content-length]'.yellow,
-        'bytes',
-        ':response-time'.yellow,
-        'ms',
-        ':bodypased'
-
-    ].join(' '));
-
-// Configuración
-// app.configure(function() {
-//     // Localización de los ficheros estÃ¡ticos
-//     app.use(express.static(__dirname + '/public'));
-//     // Muestra un log de todos los request en la consola
-//     app.use(express.logger('dev'));
-//     // Permite cambiar el HTML con el método POST
-//     app.use(express.bodyParser());
-//     // Simula DELETE y PUT
-//     app.use(express.methodOverride());
-// });
-
-// configure app to use bodyParser()
-// this will let us get the data from a POST
-
 app.locals.version = pkg.version;
 app.locals.name = pkg.name;
-
+app.cfg = require('./cf/cf.js')(app, opts);
+app.io  = require('./io/io.js')(app, http, {}, opts, cert);
+app.ev  = require('./ev/ev.js')(app);
+app.em  = require('./em/em.js')(app);
+app.log = require('./log/log.js')(app);
 app.orm = require('./orm/orm.js')({
     hostname: 'localhost',
     port: 27017,
     db: 'polls'
 });
 
-// app.use(require('node-sass').middleware({
-//          src: __dirname + '/app/scss', //where the sass files are
-//          dest: __dirname + '/public', //where css should go
-//          debug: true // obvious
-// }));
-
 app
-    .use('/api', require('./api/api.js')(app, cfg.api, opts, cert))
-    .use('/',    require('./server/server.js')(app, cfg.app, opts, cert));
-
-
-app.io = require('./io/io.js')(http, {}, opts, cert);
-
-;
-
-require('./scripts/db.js')(app.orm.auth('root', ['root']));
+    .use('/api', require('./api/api.js')(app, app.cfg.get('$.api')[0], opts, cert))
+    .use('/',    require('./server/server.js')(app, app.cfg.get('$.app')[0], opts, cert));
 
 http.listen(opts.port, function() {
-        opts.debug && app.use(morgan('app'));
+        opts.debug && app.use(app.log('app'));
         console.log('App listening on port ' + opts.port);
     });

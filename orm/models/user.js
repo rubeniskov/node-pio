@@ -22,8 +22,7 @@ module.exports = function(schema){
         },
         name: {
             first: {
-                type: String,
-                required: [true, 'user.name is required']
+                type: String
             },
             last: {
                 type: String
