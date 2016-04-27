@@ -31,14 +31,24 @@ module.exports = function(app, cfg, opts, cert) {
     });
 
     router.post('/authenticate', function(req, res) {
-
         var credentials = JSON.parse(crypto.AES.decrypt(req.body.hash, pub).toString(crypto.enc.Utf8));
-        app.orm.models.user.findOne({
-            _id: credentials.id,
+        app.orm.auth('root', ['root']).models.user.findOne({
+            $or: [{
+                _id: credentials.id
+            }, {
+                username: credentials.id,
+            }, {
+                email: credentials.id
+            }],
             password: credentials.password
         })
             .then(function(user) {
                 if (user) {
+                    if(!user.status)
+                        res.status(403).json({
+                            message: 'User banned!'
+                        });
+
                     var token = jwt.sign({
                         username: user.username,
                         groups: user.groups
@@ -69,6 +79,7 @@ module.exports = function(app, cfg, opts, cert) {
                 algorithms: ['RS256']
             }, function(err, decoded) {
                 req.user = decoded;
+                app.orm.auth(decoded.username, decoded.groups);
                 err ? res.status(403).json({
                     message: 'Failed to authenticate token.'
                 }) : next();
@@ -78,9 +89,9 @@ module.exports = function(app, cfg, opts, cert) {
         })(req.body.token || req.query.token || req.headers['x-access-token']);
     });
 
-    require('./views/user.js')(router, app.orm);
-    require('./views/poll.js')(router, app.orm);
-    require('./views/host.js')(router, app.orm);
+    require('./views/user.js')(router, app);
+    require('./views/poll.js')(router, app);
+    require('./views/host.js')(router, app);
 
     router.use(function(req, res, next) {
         res.status(404);

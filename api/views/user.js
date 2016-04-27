@@ -1,14 +1,10 @@
-const _ = require('underscore');
+const _ = require('underscore'),
+    lpad = require("underscore.string/lpad");;
 
-module.exports = function(router, orm, auth) {
-    // GET, POST, PUT, and DELETE CRUD
-    // GET, UPDATE, CREATE, DELETE
-    // 0000 1111 1+2+4+8 16
-    // orm.models.user
-    //     .expose(router, auth);
+module.exports = function(router, app, auth) {
 
     router.post('/user/query', function(req, res) {
-        orm.models.user.datatable(req.body)
+        app.orm.models.user.datatable(req.body)
             .then(function(results) {
                 res.status(200).json(results);
             }, function(err) {
@@ -17,8 +13,12 @@ module.exports = function(router, orm, auth) {
     });
 
     router.put('/user', function(req, res) {
-        orm.models.user.create(req.body)
-            .then(function() {
+        var passwd = lpad(Math.floor((Math.random()*4)), 4, '0');
+        app.orm.models.user.create(_.extend({
+            password: passwd
+        }, req.body))
+            .then(function(doc) {
+                app.ev.emit('user:created', doc, passwd);
                 res.status(200).json({
                     message: 'User created successfully'
                 });
@@ -28,7 +28,7 @@ module.exports = function(router, orm, auth) {
     });
 
     router.get('/user/:id', function(req, res) {
-        orm.models.user.findOne(_.extend({
+        app.orm.models.user.findOne(_.extend({
                 _id: req.params.id
             }, req.body))
             .then(function(doc) {

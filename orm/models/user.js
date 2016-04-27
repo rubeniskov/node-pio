@@ -1,7 +1,5 @@
 const
-    crypto = require('crypto-js'),
-    fs = require('fs'),
-    pub = fs.readFileSync('./ssl/server-pub.key', 'utf8').replace(/\-{5}([\sa-zA-Z]+)\-{5}|\n/gi, '');
+    crypto = require('crypto-js');
 
 module.exports = function(schema){
     return schema({
@@ -11,6 +9,12 @@ module.exports = function(schema){
             required: [true, 'user.id is required'],
             match: [/^(([A-Z]\d{8})|\d{8}|(\d{8}[A-Z])|([A-Z]\d{8}[A-Z]))$/, 'user.id invalid format']
         },
+        username: {
+            type: String,
+            unique: true,
+            dropDups: true,
+            required: [true, 'user.username is required']
+        },
         password: {
             type: String,
             required: [true, 'user.password is required'],
@@ -18,8 +22,7 @@ module.exports = function(schema){
         },
         name: {
             first: {
-                type: String,
-                required: [true, 'user.name is required']
+                type: String
             },
             last: {
                 type: String
@@ -41,7 +44,8 @@ module.exports = function(schema){
             type: Date
         },
         status : {
-            type: Number
+            type: Number,
+            default: 1
         },
         groups: [ String ],
         pristine: {

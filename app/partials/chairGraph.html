@@ -1,10 +1,21 @@
 <div class="chair-graph">
-    <div class="chair-graph-viewport">
-        <div class="chair-graph-content">
-            <div ng-repeat="host in _data track by $index" class="chair-graph-host is-slot-{{$index}} {{getStateClass(host)}}"> <span></span> </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="chair-graph-stats">
+                connected
+            </div>
         </div>
-    </div>
-    <div class="chair-graph-stats">
-        connected
+        <div class="col-md-8">
+            <div class="chair-graph-viewport">
+                <div class="chair-graph-content">
+                    <div ng-repeat="host in _data track by $index" class="chair-graph-host is-slot-{{$index}} {{getStateClass(host)}}"> <span></span> </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="chair-graph-stats">
+                connected
+            </div>
+        </div>
     </div>
 </div>

@@ -34,6 +34,7 @@ $slots: ($rows * $cols);
         }
     }
     &-host {
+        @include transition(transform .2s ease-in);
         @include transform-origin(center center);
         position: absolute;
         width: 5%;
@@ -65,9 +66,12 @@ $slots: ($rows * $cols);
                 $col: ($i % $cols);
                 $rin: $row / ($rows - 1);
                 $cin: $col / ($cols - 1);
-                @include transform(translate(-50%, -50%) rotate(90deg - $cin * 180deg));
+                @include transform(translate(-50%, -50%) rotate(90deg - $cin * 180deg) scale($rin * .2 + 1));
                 top: 50% + ((2+$row) / $rows) * 30% * math-sin(- $PI * $cin);
                 left: 50% + ((2+$row) / $rows) * 30% * math-cos(- $PI * $cin);
+                &:hover {
+                    @include transform(translate(-50%, -50%) rotate(90deg - $cin * 180deg) scale(($rin * .2 + 1) * 1.2));
+                }
             }
         }
     }

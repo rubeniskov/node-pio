@@ -1,8 +1,9 @@
-module.exports = function(server, cfg, options, cert) {
+module.exports = function(app, server, cfg, options, cert) {
     return function(socket, next) {
-        //console.log(this, arguments);
+        app.ev.on('user:created', function(){
+
+        });
         if(socket.connected){
-            //socket.emit('user');
             //console.log(socket.handshake.decoded_token);
             socket.join('admin')
             socket.broadcast.to('admin').emit('user', { some: 'data' });

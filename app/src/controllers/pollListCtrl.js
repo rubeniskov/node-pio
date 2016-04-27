@@ -22,7 +22,8 @@ define(['app', 'moment'], function(app, moment) {
             sAjaxDataProp: 'data',
             sPaginationType: 'full_numbers',
             serverSide: true,
-            processing: true
+            processing: true,
+            order: [[ 3, "desc" ]]
         };
 
         self.tableGridColumns = [{
