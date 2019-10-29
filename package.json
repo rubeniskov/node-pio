@@ -36,7 +36,7 @@
     "deep-extend": "^0.4.1",
     "express": "^4.13.4",
     "jsonwebtoken": "^5.7.0",
-    "mongoose": "^4.4.11",
+    "mongoose": "^5.7.7",
     "morgan": "^1.7.0",
     "nomnom": "^1.8.1",
     "npm": "^3.8.5",
